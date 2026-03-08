@@ -1,0 +1,256 @@
+---
+// Use Cases section - Conversation-style interface
+---
+
+<section class="use-cases-section" id="use-cases">
+  <div class="use-cases-container">
+    <!-- Section Header -->
+    <div class="use-cases-header reveal-up">
+      <div class="section-badge">USE CASES</div>
+      <h2 class="use-cases-title">One infrastructure. Every conversation.</h2>
+      <p class="use-cases-subtitle">Purpose-built workflows for every high-stakes communication scenario across your business.</p>
+    </div>
+
+    <!-- Use Case Tabs -->
+    <div class="uc-tabs-nav reveal-up">
+      <button class="uc-tab" data-case="sales">Sales Outreach</button>
+      <button class="uc-tab active" data-case="support">Customer Support</button>
+      <button class="uc-tab" data-case="leads">Lead Generation</button>
+      <button class="uc-tab" data-case="followup">Sales Follow-Up</button>
+      <button class="uc-tab" data-case="hr">HR & Onboarding</button>
+    </div>
+
+    <!-- Content Container -->
+    <div class="uc-content-container reveal-up">
+      <!-- Customer Support Case (Default Active) -->
+      <div class="uc-case active" data-case-content="support">
+        <div class="uc-two-column">
+          <!-- Left: Text Content -->
+          <div class="uc-text-content">
+            <div class="uc-label">CUSTOMER SUPPORT</div>
+            <h3 class="uc-heading">Resolve faster. Escalate smarter.</h3>
+            <p class="uc-description">Automate Tier-1 support flows with structured AI responses — and escalate to humans the moment a conversation needs it, with full context intact.</p>
+            <ul class="uc-features">
+              <li>Instant structured responses for common queries</li>
+              <li>Sentiment detection and priority escalation</li>
+              <li>Seamless handoff to live agents with full history</li>
+              <li>CSAT follow-up sequences post-resolution</li>
+            </ul>
+          </div>
+
+          <!-- Right: Conversation UI -->
+          <div class="uc-conversation">
+            <div class="uc-conv-header">
+              Support ticket #8823 — Customer: Ravi Kumar
+            </div>
+            <div class="uc-conv-messages">
+              <div class="uc-msg uc-msg-customer">
+                <div class="uc-msg-bubble">My invoice for March is wrong — I was charged twice.</div>
+              </div>
+              <div class="uc-msg uc-msg-system">
+                <div class="uc-msg-bubble">Sorry to hear that, Ravi. I can see orders #4821 and #4822 were both charged on March 3rd. Flagging this to billing now.</div>
+              </div>
+              <div class="uc-msg uc-msg-event">
+                <div class="uc-event-badge">Escalation triggered — Billing agent notified</div>
+              </div>
+              <div class="uc-msg uc-msg-agent">
+                <div class="uc-msg-bubble">A specialist will reach you within 2 hours. Reference: #TKT-8823.</div>
+              </div>
+              <div class="uc-msg uc-msg-customer">
+                <div class="uc-msg-bubble">Thanks, that was fast!</div>
+              </div>
+            </div>
+            <div class="uc-conv-footer">
+              Resolved in 4m 12s · CSAT follow-up scheduled
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sales Outreach Case -->
+      <div class="uc-case" data-case-content="sales">
+        <div class="uc-two-column">
+          <div class="uc-text-content">
+            <div class="uc-label">SALES OUTREACH</div>
+            <h3 class="uc-heading">Multi-channel sequences that feel human.</h3>
+            <p class="uc-description">Orchestrate email, SMS, and voice touchpoints that adapt based on engagement — with compliance and personalization built in.</p>
+            <ul class="uc-features">
+              <li>Multi-channel sequences: email → SMS → voice</li>
+              <li>AI-personalized messaging from CRM data</li>
+              <li>Automatic reply detection and handoff</li>
+              <li>Compliance-first outreach</li>
+            </ul>
+          </div>
+          <div class="uc-conversation">
+            <div class="uc-conv-header">
+              Outreach sequence — Prospect: Sarah Chen
+            </div>
+            <div class="uc-conv-messages">
+              <div class="uc-msg uc-msg-system">
+                <div class="uc-msg-bubble">Hi Sarah, noticed you downloaded our API guide. Would you like to see how we handle 40M+ messages/day?</div>
+              </div>
+              <div class="uc-msg uc-msg-customer">
+                <div class="uc-msg-bubble">Yes, interested. Can you send more info?</div>
+              </div>
+              <div class="uc-msg uc-msg-event">
+                <div class="uc-event-badge">Reply detected — Sequence paused, rep notified</div>
+              </div>
+              <div class="uc-msg uc-msg-agent">
+                <div class="uc-msg-bubble">Great! I'll send over a case study. Are you free for a 15-min call this week?</div>
+              </div>
+            </div>
+            <div class="uc-conv-footer">
+              Engagement detected in 2h 34m · Handoff to sales rep
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lead Generation Case -->
+      <div class="uc-case" data-case-content="leads">
+        <div class="uc-two-column">
+          <div class="uc-text-content">
+            <div class="uc-label">LEAD GENERATION</div>
+            <h3 class="uc-heading">Qualify and route leads automatically.</h3>
+            <p class="uc-description">Capture inbound interest, qualify leads through structured conversations, and route to the right rep — all in under 60 seconds.</p>
+            <ul class="uc-features">
+              <li>Instant inbound response — under 60 seconds</li>
+              <li>Structured qualification via SMS or chat</li>
+              <li>CRM auto-population with lead data</li>
+              <li>Lead scoring and routing to right rep</li>
+            </ul>
+          </div>
+          <div class="uc-conversation">
+            <div class="uc-conv-header">
+              Inbound lead — Form submission: Alex Martinez
+            </div>
+            <div class="uc-conv-messages">
+              <div class="uc-msg uc-msg-system">
+                <div class="uc-msg-bubble">Hi Alex! Thanks for your interest. What's your biggest challenge with customer communication?</div>
+              </div>
+              <div class="uc-msg uc-msg-customer">
+                <div class="uc-msg-bubble">We need to scale support without hiring more agents.</div>
+              </div>
+              <div class="uc-msg uc-msg-system">
+                <div class="uc-msg-bubble">Got it. What's your current monthly message volume?</div>
+              </div>
+              <div class="uc-msg uc-msg-customer">
+                <div class="uc-msg-bubble">Around 500K messages/month</div>
+              </div>
+              <div class="uc-msg uc-msg-event">
+                <div class="uc-event-badge">Lead qualified — Routed to Enterprise team</div>
+              </div>
+            </div>
+            <div class="uc-conv-footer">
+              Qualified in 58s · CRM updated · Rep assigned
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sales Follow-Up Case -->
+      <div class="uc-case" data-case-content="followup">
+        <div class="uc-two-column">
+          <div class="uc-text-content">
+            <div class="uc-label">SALES FOLLOW-UP</div>
+            <h3 class="uc-heading">Never miss a follow-up opportunity.</h3>
+            <p class="uc-description">Automated sequences that keep deals moving forward — from meeting scheduling to proposal delivery and contract reminders.</p>
+            <ul class="uc-features">
+              <li>Automated follow-up sequences</li>
+              <li>Meeting scheduling and reminders</li>
+              <li>Proposal delivery and tracking</li>
+              <li>Deal progression monitoring</li>
+            </ul>
+          </div>
+          <div class="uc-conversation">
+            <div class="uc-conv-header">
+              Follow-up sequence — Deal: Acme Corp
+            </div>
+            <div class="uc-conv-messages">
+              <div class="uc-msg uc-msg-system">
+                <div class="uc-msg-bubble">Hi James, following up on our demo last week. Did you have a chance to review the proposal?</div>
+              </div>
+              <div class="uc-msg uc-msg-customer">
+                <div class="uc-msg-bubble">Yes, looks good. Need to discuss pricing with the team.</div>
+              </div>
+              <div class="uc-msg uc-msg-system">
+                <div class="uc-msg-bubble">Perfect! I can schedule a call with our solutions architect. How's Thursday at 2pm?</div>
+              </div>
+              <div class="uc-msg uc-msg-customer">
+                <div class="uc-msg-bubble">Works for me!</div>
+              </div>
+              <div class="uc-msg uc-msg-event">
+                <div class="uc-event-badge">Meeting scheduled — Calendar invite sent</div>
+              </div>
+            </div>
+            <div class="uc-conv-footer">
+              Deal progressed to negotiation · Next touchpoint: Thu 2pm
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HR & Onboarding Case -->
+      <div class="uc-case" data-case-content="hr">
+        <div class="uc-two-column">
+          <div class="uc-text-content">
+            <div class="uc-label">HR & ONBOARDING</div>
+            <h3 class="uc-heading">Streamline employee communication.</h3>
+            <p class="uc-description">Automate offer letters, onboarding workflows, benefits enrollment, and pulse surveys — all with the personal touch employees expect.</p>
+            <ul class="uc-features">
+              <li>Offer letter automation and tracking</li>
+              <li>Onboarding workflow orchestration</li>
+              <li>Benefits enrollment reminders</li>
+              <li>Pulse surveys and feedback collection</li>
+            </ul>
+          </div>
+          <div class="uc-conversation">
+            <div class="uc-conv-header">
+              Onboarding workflow — New hire: Maya Patel
+            </div>
+            <div class="uc-conv-messages">
+              <div class="uc-msg uc-msg-system">
+                <div class="uc-msg-bubble">Welcome to the team, Maya! Your first day is Monday, June 5th. Have you completed your I-9 form?</div>
+              </div>
+              <div class="uc-msg uc-msg-customer">
+                <div class="uc-msg-bubble">Yes, submitted yesterday!</div>
+              </div>
+              <div class="uc-msg uc-msg-system">
+                <div class="uc-msg-bubble">Great! Next step: benefits enrollment. You have until June 15th. Link: [portal.company.com]</div>
+              </div>
+              <div class="uc-msg uc-msg-event">
+                <div class="uc-event-badge">Task completed — Reminder scheduled for June 10th</div>
+              </div>
+            </div>
+            <div class="uc-conv-footer">
+              Onboarding 60% complete · Next milestone: Benefits enrollment
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Tab switching functionality
+  const tabs = document.querySelectorAll('.uc-tab');
+  const cases = document.querySelectorAll('.uc-case');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetCase = tab.getAttribute('data-case');
+      
+      // Remove active class from all tabs and cases
+      tabs.forEach(t => t.classList.remove('active'));
+      cases.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked tab and corresponding case
+      tab.classList.add('active');
+      const targetContent = document.querySelector(`[data-case-content="${targetCase}"]`);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
+</script>

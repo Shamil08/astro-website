@@ -1,0 +1,108 @@
+---
+// Architecture/Orchestration section with 3-column layout
+---
+
+<section class="orchestration-section">
+  <div class="orchestration-container reveal-up">
+    <h2 class="orchestration-title">How RYX AI Orchestrates Customer Communication</h2>
+    
+    <div class="orchestration-diagram-box">
+      <svg class="orch-connectors" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <!-- Left to Center connections -->
+        <path class="orch-line" d="M 320 200 Q 400 220 440 280" id="path-l1" />
+        <path class="orch-line" d="M 320 280 Q 380 280 440 300" id="path-l2" />
+        <path class="orch-line" d="M 320 360 Q 380 340 440 320" id="path-l3" />
+        
+        <!-- Center to Right connections -->
+        <path class="orch-line" d="M 560 240 Q 620 220 680 200" id="path-r1" />
+        <path class="orch-line" d="M 560 280 Q 620 260 680 240" id="path-r2" />
+        <path class="orch-line" d="M 560 300 Q 620 300 680 280" id="path-r3" />
+        <path class="orch-line" d="M 560 320 Q 620 330 680 320" id="path-r4" />
+        <path class="orch-line" d="M 560 340 Q 620 370 680 380" id="path-r5" />
+        <path class="orch-line" d="M 560 360 Q 620 400 680 420" id="path-r6" />
+        
+        <!-- Animated particles -->
+        <circle class="orch-particle" r="3" fill="#4f8ef7" opacity="0.8">
+          <animateMotion dur="4s" repeatCount="indefinite">
+            <mpath href="#path-l1"/>
+          </animateMotion>
+        </circle>
+        <circle class="orch-particle" r="3" fill="#7c5cfc" opacity="0.8">
+          <animateMotion dur="4.5s" repeatCount="indefinite" begin="0.5s">
+            <mpath href="#path-l2"/>
+          </animateMotion>
+        </circle>
+        <circle class="orch-particle" r="3" fill="#4f8ef7" opacity="0.8">
+          <animateMotion dur="5s" repeatCount="indefinite" begin="1s">
+            <mpath href="#path-l3"/>
+          </animateMotion>
+        </circle>
+      </svg>
+      
+      <div class="orch-grid">
+        <!-- LEFT COLUMN -->
+        <div class="orch-column orch-left">
+          <h3 class="orch-column-title">Customer Communication Channels</h3>
+          <div class="orch-items">
+            <div class="orch-item"><div class="orch-icon">💬</div><span>Chat</span></div>
+            <div class="orch-item"><div class="orch-icon">✉️</div><span>Mail</span></div>
+            <div class="orch-item"><div class="orch-icon">📞</div><span>Voice</span></div>
+          </div>
+        </div>
+        
+        <!-- CENTER COLUMN -->
+        <div class="orch-column orch-center">
+          <h3 class="orch-platform-title">RYX AI PLATFORM</h3>
+          <div class="orch-platform-cards">
+            <div class="orch-platform-card card-1">
+              <div class="orch-card-icon">🔄</div>
+              <div class="orch-card-text">
+                <div class="orch-card-title">AI Orchestration</div>
+                <div class="orch-card-subtitle">& Workflow Automation</div>
+              </div>
+            </div>
+            <div class="orch-platform-card card-2">
+              <div class="orch-card-icon">🗄️</div>
+              <div class="orch-card-text">
+                <div class="orch-card-title">Knowledge Lakebase</div>
+                <div class="orch-card-subtitle">& Routing Engine</div>
+              </div>
+            </div>
+            <div class="orch-platform-card card-3">
+              <div class="orch-card-icon">🛡️</div>
+              <div class="orch-card-text">
+                <div class="orch-card-title">Safety & Guardrails</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- RIGHT COLUMN -->
+        <div class="orch-column orch-right">
+          <h3 class="orch-column-title">Business Systems & Knowledge</h3>
+          
+          <div class="orch-subsection">
+            <h4 class="orch-subsection-title">Business Systems</h4>
+            <div class="orch-items">
+              <div class="orch-item"><div class="orch-icon">✓</div><span>CRM</span></div>
+              <div class="orch-item"><div class="orch-icon">💼</div><span>Sales</span></div>
+              <div class="orch-item"><div class="orch-icon">👥</div><span>Support</span></div>
+              <div class="orch-item"><div class="orch-icon">📊</div><span>Analytics</span></div>
+            </div>
+          </div>
+          
+          <div class="orch-subsection">
+            <h4 class="orch-subsection-title">Connected Knowledge Sources</h4>
+            <div class="orch-items">
+              <div class="orch-item"><div class="orch-icon">📄</div><span>Internal Docs</span></div>
+              <div class="orch-item"><div class="orch-icon">❓</div><span>Product FAQs</span></div>
+              <div class="orch-item"><div class="orch-icon">📋</div><span>Policies & Guides</span></div>
+              <div class="orch-item"><div class="orch-icon">🧠</div><span>Tribal Knowledge</span></div>
+              <div class="orch-item"><div class="orch-icon">📊</div><span>Analytics</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,295 @@
+---
+// Solutions section - Industry-specific tab component
+---
+
+<section class="solutions-section" id="solutions">
+  <div class="solutions-glow"></div>
+  <div class="solutions-container">
+    <div class="solutions-header reveal-up">
+      <div class="section-badge">SOLUTIONS</div>
+      <h2 class="solutions-title">Built for every industry that<br/>communicates at scale.</h2>
+    </div>
+
+    <div class="solutions-card reveal-up">
+      <!-- Left Column: Industry Tabs -->
+      <div class="solutions-tabs-column">
+        <div class="solutions-tabs" id="solutionsTabs">
+          <button class="sol-tab active" data-industry="financial" onclick="selectIndustry('financial')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" x2="21" y1="22" y2="22"/>
+              <line x1="6" x2="6" y1="18" y2="11"/>
+              <line x1="10" x2="10" y1="18" y2="11"/>
+              <line x1="14" x2="14" y1="18" y2="11"/>
+              <line x1="18" x2="18" y1="18" y2="11"/>
+              <polygon points="12 2 20 7 4 7"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">Financial Services</span>
+        </button>
+
+        <button class="sol-tab" data-industry="healthcare" onclick="selectIndustry('healthcare')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">Healthcare</span>
+        </button>
+
+        <button class="sol-tab" data-industry="ecommerce" onclick="selectIndustry('ecommerce')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+              <path d="M3 6h18"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">E-Commerce</span>
+        </button>
+
+        <button class="sol-tab" data-industry="government" onclick="selectIndustry('government')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="14" x="2" y="7" rx="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">Government</span>
+        </button>
+
+        <button class="sol-tab" data-industry="travel" onclick="selectIndustry('travel')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">Travel & Logistics</span>
+        </button>
+
+        <button class="sol-tab" data-industry="education" onclick="selectIndustry('education')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+              <path d="M22 10v6"/>
+              <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">Education</span>
+        </button>
+
+        <button class="sol-tab" data-industry="retail" onclick="selectIndustry('retail')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
+              <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
+              <path d="M12 3v6"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">Retail</span>
+        </button>
+
+        <button class="sol-tab" data-industry="insurance" onclick="selectIndustry('insurance')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">Insurance</span>
+        </button>
+
+        <button class="sol-tab" data-industry="realestate" onclick="selectIndustry('realestate')">
+          <div class="sol-tab-indicator"></div>
+          <div class="sol-tab-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <span class="sol-tab-label">Real Estate</span>
+        </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Content Panel -->
+      <div class="solutions-content" id="solutionsContent">
+        <!-- Content will be dynamically inserted by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Industry solutions data
+  const industries = {
+    financial: {
+      label: 'FINANCIAL SERVICES',
+      color: '#4f8ef7',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>`,
+      headline: 'Compliant outreach at any scale.',
+      description: 'Automate client notifications, fraud alerts, and account communications across millions of customers — with full audit trails and regulatory compliance baked in.',
+      metric: '40M+',
+      metricLabel: 'messages/day per client',
+      tags: ['SOC 2', 'Audit Logs', 'Fraud Alerts', 'Regulatory'],
+      cta: 'See how it works for financial services'
+    },
+    healthcare: {
+      label: 'HEALTHCARE',
+      color: '#7c5cfc',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>`,
+      headline: 'HIPAA-safe patient messaging.',
+      description: 'Send appointment reminders, care plan updates, and clinical escalations with the privacy guarantees and reliability that healthcare demands.',
+      metric: '99.99%',
+      metricLabel: 'delivery reliability',
+      tags: ['HIPAA', 'PII Protection', 'Care Plans', 'Escalation'],
+      cta: 'See how it works for healthcare'
+    },
+    ecommerce: {
+      label: 'E-COMMERCE',
+      color: '#4f8ef7',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+      headline: 'Real-time customer engagement.',
+      description: 'Orchestrate order confirmations, shipping updates, win-back campaigns, and support interactions from a single platform that scales with peak demand.',
+      metric: '3×',
+      metricLabel: 'open rate vs broadcast',
+      tags: ['Order Updates', 'Campaigns', 'Peak Scale', 'Personalization'],
+      cta: 'See how it works for e-commerce'
+    },
+    government: {
+      label: 'GOVERNMENT',
+      color: '#7c5cfc',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+      headline: 'Reliable civic communication.',
+      description: 'Deliver public notifications, emergency alerts, and citizen service responses at municipal or national scale with zero tolerance for failure.',
+      metric: '<80ms',
+      metricLabel: 'emergency alert latency',
+      tags: ['Emergency Alerts', 'Multi-Channel', 'Accessibility', 'Audit'],
+      cta: 'See how it works for government'
+    },
+    travel: {
+      label: 'TRAVEL & LOGISTICS',
+      color: '#4f8ef7',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>`,
+      headline: 'Proactive status intelligence.',
+      description: 'Push flight changes, delivery exceptions, and route updates in real time — before your customers need to ask.',
+      metric: '200ms',
+      metricLabel: 'avg proactive alert speed',
+      tags: ['Flight Updates', 'Delivery Exceptions', 'Real-Time', 'Proactive'],
+      cta: 'See how it works for travel & logistics'
+    },
+    education: {
+      label: 'EDUCATION',
+      color: '#7c5cfc',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>`,
+      headline: 'Personalized learner journeys.',
+      description: 'Automate enrollment flows, progress nudges, and institutional communications across thousands of students simultaneously.',
+      metric: '85%',
+      metricLabel: 'course completion lift',
+      tags: ['Enrollment', 'Progress Nudges', 'Personalization', 'Bulk Send'],
+      cta: 'See how it works for education'
+    },
+    retail: {
+      label: 'RETAIL',
+      color: '#4f8ef7',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/><path d="M12 3v6"/></svg>`,
+      headline: 'Omnichannel customer experience.',
+      description: 'Connect in-store, online, and mobile touchpoints with unified messaging for promotions, loyalty programs, and personalized recommendations.',
+      metric: '4.2×',
+      metricLabel: 'ROI on targeted campaigns',
+      tags: ['Loyalty Programs', 'Promotions', 'In-Store Pickup', 'Personalization'],
+      cta: 'See how it works for retail'
+    },
+    insurance: {
+      label: 'INSURANCE',
+      color: '#7c5cfc',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>`,
+      headline: 'Automated claims & policy updates.',
+      description: 'Handle policy renewals, claims status updates, and risk assessments with intelligent routing and compliance tracking built in.',
+      metric: '60%',
+      metricLabel: 'faster claims processing',
+      tags: ['Claims Automation', 'Policy Updates', 'Risk Assessment', 'Compliance'],
+      cta: 'See how it works for insurance'
+    },
+    realestate: {
+      label: 'REAL ESTATE',
+      color: '#4f8ef7',
+      icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+      headline: 'Smart property engagement.',
+      description: 'Automate showing schedules, offer negotiations, and closing updates while keeping buyers, sellers, and agents in sync.',
+      metric: '2.5×',
+      metricLabel: 'more qualified leads',
+      tags: ['Showing Schedules', 'Offer Management', 'Closing Updates', 'Lead Nurture'],
+      cta: 'See how it works for real estate'
+    }
+  };
+
+  let currentIndustry = 'financial';
+
+  function renderIndustryContent(industryKey) {
+    const industry = industries[industryKey];
+    const content = document.getElementById('solutionsContent');
+    
+    if (!content || !industry) return;
+    
+    content.innerHTML = `
+      <div class="sol-industry-label" style="color: ${industry.color};">
+        ${industry.icon}
+        <span>${industry.label}</span>
+      </div>
+      <h3 class="sol-headline">${industry.headline}</h3>
+      <p class="sol-description">${industry.description}</p>
+      
+      <div class="sol-metric-card">
+        <div class="sol-metric-value" style="color: ${industry.color};">${industry.metric}</div>
+        <div class="sol-metric-label">${industry.metricLabel}</div>
+      </div>
+      
+      <div class="sol-tags">
+        ${industry.tags.map(tag => `<span class="sol-tag">${tag}</span>`).join('')}
+      </div>
+      
+      <a href="#contact" class="sol-cta">
+        ${industry.cta}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14"/>
+          <path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+    `;
+    
+    // Add fade-in animation
+    content.classList.remove('sol-fade-in');
+    void content.offsetWidth; // Trigger reflow
+    content.classList.add('sol-fade-in');
+  }
+
+  // Make function global so onclick can access it
+  window.selectIndustry = function(industryKey) {
+    currentIndustry = industryKey;
+    
+    // Update active tab
+    document.querySelectorAll('.sol-tab').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.industry === industryKey);
+    });
+    
+    // Render content
+    renderIndustryContent(industryKey);
+  };
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('solutionsContent')) {
+      renderIndustryContent('financial');
+    }
+  });
+</script>

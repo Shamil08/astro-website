@@ -1,0 +1,210 @@
+---
+// Customer Stories - Spotlight Testimonial Slider
+---
+
+<section class="testimonials-section" id="customer-stories">
+  <div class="testimonials-container">
+    <!-- Section Header -->
+    <div class="testimonials-header reveal-up">
+      <div class="section-badge">CUSTOMER STORIES</div>
+      <h2 class="testimonials-title">Teams that ship faster with less risk.</h2>
+    </div>
+
+    <!-- Testimonial Card -->
+    <div class="testimonial-spotlight-card reveal-up">
+      <!-- Testimonial Content (will be dynamically updated) -->
+      <div class="testimonial-content" id="testimonialContent">
+        <!-- Content injected by JavaScript -->
+      </div>
+
+      <!-- Company Tag -->
+      <div class="testimonial-company-tag" id="testimonialCompanyTag">
+        <!-- Company name injected by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Carousel Navigation -->
+    <div class="testimonial-navigation reveal-up">
+      <!-- Pagination Dots -->
+      <div class="testimonial-dots" id="testimonialDots">
+        <!-- Dots injected by JavaScript -->
+      </div>
+
+      <!-- Arrow Buttons -->
+      <div class="testimonial-arrows">
+        <button class="testimonial-arrow-btn prev" id="testimonialPrev" aria-label="Previous testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <button class="testimonial-arrow-btn next" id="testimonialNext" aria-label="Next testimonial">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Testimonials data
+  const testimonials = [
+    {
+      quote: "The safety layer is what sold us. We can deploy AI-generated responses to patients knowing every message has been validated before it goes out.",
+      author: "Dr. Priya Nair",
+      title: "Chief Digital Officer",
+      company: "MedCore Health",
+      initials: "PN",
+      color: "#7c5cfc"
+    },
+    {
+      quote: "RYX AI transformed how we handle customer communication. Response time dropped by 70% without sacrificing quality.",
+      author: "Sarah Chen",
+      title: "VP of Engineering",
+      company: "TechCorp",
+      initials: "SC",
+      color: "#4f8ef7"
+    },
+    {
+      quote: "The compliance and monitoring tools gave us the confidence to deploy AI at scale.",
+      author: "Michael Rodriguez",
+      title: "CTO",
+      company: "FinanceHub",
+      initials: "MR",
+      color: "#7c5cfc"
+    },
+    {
+      quote: "Finally, infrastructure that can keep up with us. Black Friday, Prime Day — it doesn't matter. RYX AI doesn't flinch.",
+      author: "Jordan Kim",
+      title: "CTO",
+      company: "ShopStream",
+      initials: "JK",
+      color: "#4f8ef7"
+    }
+  ];
+
+  let currentTestimonial = 0;
+  let autoRotateInterval: number | null = null;
+
+  // Render testimonial content
+  function renderTestimonial(index: number) {
+    const testimonial = testimonials[index];
+    const contentEl = document.getElementById('testimonialContent');
+    const companyTagEl = document.getElementById('testimonialCompanyTag');
+
+    if (!contentEl || !companyTagEl) return;
+
+    // Fade out
+    contentEl.style.opacity = '0';
+    companyTagEl.style.opacity = '0';
+
+    setTimeout(() => {
+      // Update content
+      contentEl.innerHTML = `
+        <div class="testimonial-quote-large">
+          "${testimonial.quote}"
+        </div>
+        <div class="testimonial-author-info">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, ${testimonial.color}, ${testimonial.color === '#4f8ef7' ? '#7c5cfc' : '#4f8ef7'});">
+            ${testimonial.initials}
+          </div>
+          <div class="testimonial-author-details">
+            <div class="testimonial-author-name">${testimonial.author}</div>
+            <div class="testimonial-author-title">${testimonial.title} · ${testimonial.company}</div>
+          </div>
+        </div>
+      `;
+
+      companyTagEl.textContent = testimonial.company;
+
+      // Fade in
+      contentEl.style.opacity = '1';
+      companyTagEl.style.opacity = '1';
+    }, 300);
+
+    // Update dots
+    document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  // Build dots
+  function buildDots() {
+    const dotsContainer = document.getElementById('testimonialDots');
+    if (!dotsContainer) return;
+
+    dotsContainer.innerHTML = testimonials.map((_, i) => `
+      <button class="testimonial-dot ${i === 0 ? 'active' : ''}" data-index="${i}" aria-label="Go to testimonial ${i + 1}"></button>
+    `).join('');
+
+    // Add click handlers
+    document.querySelectorAll('.testimonial-dot').forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentTestimonial = index;
+        renderTestimonial(index);
+        resetAutoRotate();
+      });
+    });
+  }
+
+  // Navigation functions
+  function nextTestimonial() {
+    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+    renderTestimonial(currentTestimonial);
+  }
+
+  function prevTestimonial() {
+    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+    renderTestimonial(currentTestimonial);
+  }
+
+  // Auto-rotate
+  function startAutoRotate() {
+    autoRotateInterval = setInterval(nextTestimonial, 6000);
+  }
+
+  function stopAutoRotate() {
+    if (autoRotateInterval) {
+      clearInterval(autoRotateInterval);
+      autoRotateInterval = null;
+    }
+  }
+
+  function resetAutoRotate() {
+    stopAutoRotate();
+    startAutoRotate();
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    buildDots();
+    renderTestimonial(0);
+    startAutoRotate();
+
+    // Arrow button handlers
+    const prevBtn = document.getElementById('testimonialPrev');
+    const nextBtn = document.getElementById('testimonialNext');
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevTestimonial();
+        resetAutoRotate();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextTestimonial();
+        resetAutoRotate();
+      });
+    }
+
+    // Pause on hover
+    const card = document.querySelector('.testimonial-spotlight-card');
+    if (card) {
+      card.addEventListener('mouseenter', stopAutoRotate);
+      card.addEventListener('mouseleave', startAutoRotate);
+    }
+  });
+</script>
