@@ -1,0 +1,129 @@
+---
+// How It Works timeline section
+const steps = [
+  {
+    number: '01',
+    tag: 'DISCOVERY',
+    title: 'Requirement discovery & operational audit',
+    description: 'We analyze how your communication operations function today and identify where automation can deliver the most impact.',
+    bullets: [
+      'Current workflow mapping',
+      'Volume & channel analysis',
+      'Pain point identification',
+      'Compliance requirements',
+      'Integration assessment',
+      'Success metrics definition'
+    ]
+  },
+  {
+    number: '02',
+    tag: 'KNOWLEDGE',
+    title: 'Knowledge structuring',
+    description: 'We structure your operational knowledge into a format that AI can reliably use.',
+    bullets: [
+      'Document collection & analysis',
+      'Knowledge graph creation',
+      'Policy extraction',
+      'FAQ structuring',
+      'Edge case documentation'
+    ]
+  },
+  {
+    number: '03',
+    tag: 'DESIGN',
+    title: 'System & flow design',
+    description: 'We design the complete system architecture and interaction flows.',
+    bullets: [
+      'Architecture design',
+      'Flow mapping',
+      'Safety policy definition',
+      'Integration planning',
+      'Monitoring setup'
+    ]
+  },
+  {
+    number: '04',
+    tag: 'DEPLOYMENT',
+    title: 'Build, deployment & optimization',
+    description: 'We build, test, deploy, and continuously optimize your system.',
+    bullets: [
+      'System implementation',
+      'Testing & validation',
+      'Staged rollout',
+      'Team training',
+      'Continuous optimization'
+    ]
+  }
+];
+---
+
+<section class="how-section" id="how">
+  <div class="how-bg-glow"></div>
+  <div class="how-container">
+    <div class="how-header reveal-up">
+      <div class="how-badge">HOW IT WORKS</div>
+      <h2 class="how-title">From zero to production<br/>in four steps.</h2>
+    </div>
+
+    <div class="how-steps-wrap">
+      <div class="how-center-line"></div>
+      <div class="how-center-line-fill" id="howLineFill"></div>
+      <div class="how-timeline-dot" id="howTimelineDot"></div>
+      
+      {steps.map((step, index) => (
+        <div class="how-step-row">
+          {/* Left Column */}
+          <div class="how-step-left">
+            {index % 2 === 0 ? (
+              // Odd steps (1, 3): Number on left
+              <div class="how-step-number-standalone">{step.number}</div>
+            ) : (
+              // Even steps (2, 4): Card on left
+              <div class="how-step-wrapper">
+                <div class="how-step-badge-overlay" style={`color: ${index === 1 ? '#5b7ced' : '#7c5cfc'}; background: ${index === 1 ? 'rgba(91,124,237,0.1)' : 'rgba(124,92,252,0.1)'}; border-color: ${index === 1 ? 'rgba(91,124,237,0.3)' : 'rgba(124,92,252,0.3)'};`}>{step.tag}</div>
+                <div class="how-step-content">
+                  <h3 class="how-step-title">{step.title}</h3>
+                  <p class="how-step-desc">{step.description}</p>
+                  <ul class="how-step-bullets">
+                    {step.bullets.map(bullet => (
+                      <li>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+          
+          {/* Center Timeline Node */}
+          <div class="how-step-center">
+            <div class="how-timeline-node">
+              <div class="how-timeline-node-inner"></div>
+            </div>
+          </div>
+          
+          {/* Right Column */}
+          <div class="how-step-right">
+            {index % 2 === 0 ? (
+              // Odd steps (1, 3): Card on right
+              <div class="how-step-wrapper">
+                <div class="how-step-badge-overlay" style={`color: ${index === 0 ? '#4f8ef7' : '#6c69e5'}; background: ${index === 0 ? 'rgba(79,142,247,0.1)' : 'rgba(108,105,229,0.1)'}; border-color: ${index === 0 ? 'rgba(79,142,247,0.3)' : 'rgba(108,105,229,0.3)'};`}>{step.tag}</div>
+                <div class="how-step-content">
+                  <h3 class="how-step-title">{step.title}</h3>
+                  <p class="how-step-desc">{step.description}</p>
+                  <ul class="how-step-bullets">
+                    {step.bullets.map(bullet => (
+                      <li>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              // Even steps (2, 4): Number on right
+              <div class="how-step-number-standalone">{step.number}</div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,104 +1,445 @@
 ---
-// Architecture/Orchestration section with 3-column layout
+// Architecture/Orchestration section - Polished diagram
 ---
 
 <section class="orchestration-section">
   <div class="orchestration-container reveal-up">
-    <h2 class="orchestration-title">How RYX AI Orchestrates Customer Communication</h2>
-    
-    <div class="orchestration-diagram-box">
-      <svg class="orch-connectors" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
-        <!-- Left to Center connections -->
-        <path class="orch-line" d="M 320 200 Q 400 220 440 280" id="path-l1" />
-        <path class="orch-line" d="M 320 280 Q 380 280 440 300" id="path-l2" />
-        <path class="orch-line" d="M 320 360 Q 380 340 440 320" id="path-l3" />
-        
-        <!-- Center to Right connections -->
-        <path class="orch-line" d="M 560 240 Q 620 220 680 200" id="path-r1" />
-        <path class="orch-line" d="M 560 280 Q 620 260 680 240" id="path-r2" />
-        <path class="orch-line" d="M 560 300 Q 620 300 680 280" id="path-r3" />
-        <path class="orch-line" d="M 560 320 Q 620 330 680 320" id="path-r4" />
-        <path class="orch-line" d="M 560 340 Q 620 370 680 380" id="path-r5" />
-        <path class="orch-line" d="M 560 360 Q 620 400 680 420" id="path-r6" />
-        
-        <!-- Animated particles -->
-        <circle class="orch-particle" r="3" fill="#4f8ef7" opacity="0.8">
-          <animateMotion dur="4s" repeatCount="indefinite">
-            <mpath href="#path-l1"/>
-          </animateMotion>
-        </circle>
-        <circle class="orch-particle" r="3" fill="#7c5cfc" opacity="0.8">
-          <animateMotion dur="4.5s" repeatCount="indefinite" begin="0.5s">
-            <mpath href="#path-l2"/>
-          </animateMotion>
-        </circle>
-        <circle class="orch-particle" r="3" fill="#4f8ef7" opacity="0.8">
-          <animateMotion dur="5s" repeatCount="indefinite" begin="1s">
-            <mpath href="#path-l3"/>
-          </animateMotion>
-        </circle>
-      </svg>
-      
-      <div class="orch-grid">
-        <!-- LEFT COLUMN -->
-        <div class="orch-column orch-left">
-          <h3 class="orch-column-title">Customer Communication Channels</h3>
-          <div class="orch-items">
-            <div class="orch-item"><div class="orch-icon">💬</div><span>Chat</span></div>
-            <div class="orch-item"><div class="orch-icon">✉️</div><span>Mail</span></div>
-            <div class="orch-item"><div class="orch-icon">📞</div><span>Voice</span></div>
-          </div>
-        </div>
-        
-        <!-- CENTER COLUMN -->
-        <div class="orch-column orch-center">
-          <h3 class="orch-platform-title">RYX AI PLATFORM</h3>
-          <div class="orch-platform-cards">
-            <div class="orch-platform-card card-1">
-              <div class="orch-card-icon">🔄</div>
-              <div class="orch-card-text">
-                <div class="orch-card-title">AI Orchestration</div>
-                <div class="orch-card-subtitle">& Workflow Automation</div>
+    <!-- Section Header -->
+    <div class="orch-header">
+      <div class="orch-badge">
+        <span class="orch-badge-dot"></span>
+        Platform Architecture
+      </div>
+      <h2 class="orch-title">
+        How RYX AI Orchestrates<br>
+        <span class="orch-title-gradient">Customer Communication</span>
+      </h2>
+    </div>
+
+    <!-- Main Diagram -->
+    <div class="orch-diagram-wrapper">
+      <svg class="orch-svg-overlay" id="orchSvg"></svg>
+
+      <div class="orch-top-row">
+        <!-- LEFT: Communication Channels -->
+        <div class="orch-panel orch-panel-left">
+          <div class="orch-panel-title">Communication Channels</div>
+          <div class="orch-channel-list">
+            <div class="orch-channel-item" id="orch-ch-chat">
+              <div class="orch-ch-icon" style="background:linear-gradient(135deg,#1e3a8a,#3b82f6)">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" fill="white" opacity="0.9"/>
+                </svg>
               </div>
+              Chat
             </div>
-            <div class="orch-platform-card card-2">
-              <div class="orch-card-icon">🗄️</div>
-              <div class="orch-card-text">
-                <div class="orch-card-title">Knowledge Lakebase</div>
-                <div class="orch-card-subtitle">& Routing Engine</div>
+            <div class="orch-channel-item" id="orch-ch-mail">
+              <div class="orch-ch-icon" style="background:linear-gradient(135deg,#134e4a,#0d9488)">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="4" width="20" height="16" rx="2" stroke="white" stroke-width="1.6"/>
+                  <polyline points="2,4 12,13 22,4" stroke="white" stroke-width="1.6" fill="none"/>
+                </svg>
               </div>
+              Mail
             </div>
-            <div class="orch-platform-card card-3">
-              <div class="orch-card-icon">🛡️</div>
-              <div class="orch-card-text">
-                <div class="orch-card-title">Safety & Guardrails</div>
+            <div class="orch-channel-item" id="orch-ch-voice">
+              <div class="orch-ch-icon" style="background:linear-gradient(135deg,#7c2d12,#f97316)">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" fill="white" opacity="0.9"/>
+                </svg>
               </div>
+              Voice
             </div>
           </div>
         </div>
-        
-        <!-- RIGHT COLUMN -->
-        <div class="orch-column orch-right">
-          <h3 class="orch-column-title">Business Systems & Knowledge</h3>
-          
-          <div class="orch-subsection">
-            <h4 class="orch-subsection-title">Business Systems</h4>
-            <div class="orch-items">
-              <div class="orch-item"><div class="orch-icon">✓</div><span>CRM</span></div>
-              <div class="orch-item"><div class="orch-icon">💼</div><span>Sales</span></div>
-              <div class="orch-item"><div class="orch-icon">👥</div><span>Support</span></div>
-              <div class="orch-item"><div class="orch-icon">📊</div><span>Analytics</span></div>
+
+        <!-- CENTER: Platform -->
+        <div class="orch-center-col">
+          <div class="orch-platform-box" id="orch-platform">
+            <div class="orch-platform-header">
+              <svg class="orch-platform-logo" viewBox="0 0 28 28" fill="none">
+                <defs>
+                  <linearGradient id="orchLg1" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#4f8ef7"/>
+                    <stop offset="100%" stop-color="#7b6ef6"/>
+                  </linearGradient>
+                </defs>
+                <polygon points="14,1.5 25,8 25,20 14,26.5 3,20 3,8" fill="rgba(79,142,247,0.12)" stroke="url(#orchLg1)" stroke-width="1.4"/>
+                <circle cx="14" cy="14" r="4.5" fill="none" stroke="url(#orchLg1)" stroke-width="1.2"/>
+                <circle cx="14" cy="14" r="2" fill="#4f8ef7"/>
+                <line x1="14" y1="3" x2="14" y2="9.5" stroke="#4f8ef7" stroke-width="1" opacity="0.5"/>
+                <line x1="14" y1="18.5" x2="14" y2="25" stroke="#4f8ef7" stroke-width="1" opacity="0.5"/>
+                <line x1="4.5" y1="9" x2="9.5" y2="12" stroke="#7b6ef6" stroke-width="1" opacity="0.5"/>
+                <line x1="18.5" y1="16" x2="23.5" y2="19" stroke="#7b6ef6" stroke-width="1" opacity="0.5"/>
+                <line x1="4.5" y1="19" x2="9.5" y2="16" stroke="#7b6ef6" stroke-width="1" opacity="0.5"/>
+                <line x1="18.5" y1="12" x2="23.5" y2="9" stroke="#7b6ef6" stroke-width="1" opacity="0.5"/>
+              </svg>
+              <span class="orch-platform-label">RYX AI Platform</span>
+            </div>
+
+            <div class="orch-module" id="orch-mod-ai">
+              <div class="orch-mod-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" fill="white" opacity="0.85"/>
+                  <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="orch-mod-text">
+                <div class="orch-mod-name">AI Orchestration</div>
+                <div class="orch-mod-sub">& Workflow Automation</div>
+              </div>
+            </div>
+
+            <div class="orch-module" id="orch-mod-kb">
+              <div class="orch-mod-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <ellipse cx="12" cy="5" rx="9" ry="3" stroke="white" stroke-width="1.5"/>
+                  <path d="M3 5v5c0 1.66 4.03 3 9 3s9-1.34 9-3V5" stroke="white" stroke-width="1.5"/>
+                  <path d="M3 10v5c0 1.66 4.03 3 9 3s9-1.34 9-3v-5" stroke="white" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="orch-mod-text">
+                <div class="orch-mod-name">Knowledge Lakebase</div>
+                <div class="orch-mod-sub">& Routing Engine</div>
+              </div>
+            </div>
+
+            <div class="orch-module" id="orch-mod-safe">
+              <div class="orch-mod-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.5"/>
+                  <polyline points="9,12 11,14 15,10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="orch-mod-text">
+                <div class="orch-mod-name">Safety & Guardrails</div>
+              </div>
             </div>
           </div>
-          
-          <div class="orch-subsection">
-            <h4 class="orch-subsection-title">Connected Knowledge Sources</h4>
-            <div class="orch-items">
-              <div class="orch-item"><div class="orch-icon">📄</div><span>Internal Docs</span></div>
-              <div class="orch-item"><div class="orch-icon">❓</div><span>Product FAQs</span></div>
-              <div class="orch-item"><div class="orch-icon">📋</div><span>Policies & Guides</span></div>
-              <div class="orch-item"><div class="orch-icon">🧠</div><span>Tribal Knowledge</span></div>
-              <div class="orch-item"><div class="orch-icon">📊</div><span>Analytics</span></div>
+        </div>
+
+        <!-- RIGHT: Business Systems -->
+        <div class="orch-panel orch-panel-right">
+          <div class="orch-section-sub">
+            <svg width="12" height="12" viewBox="0 0 12 12">
+              <circle cx="6" cy="6" r="5" fill="#f97316"/>
+              <circle cx="6" cy="6" r="2.5" fill="#fed7aa"/>
+            </svg>
+            Business Systems
+          </div>
+          <div class="orch-sys-list">
+            <div class="orch-sys-item" id="orch-sys-crm">
+              <div class="orch-sys-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="#818cf8" stroke-width="1.8" stroke-linecap="round"/>
+                  <circle cx="12" cy="7" r="4" stroke="#818cf8" stroke-width="1.8"/>
+                </svg>
+              </div>
+              CRM
+            </div>
+            <div class="orch-sys-item" id="orch-sys-sales">
+              <div class="orch-sys-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <polyline points="22,7 13.5,15.5 8.5,10.5 2,17" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="16,7 22,7 22,13" stroke="#34d399" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              Sales
+            </div>
+            <div class="orch-sys-item" id="orch-sys-support">
+              <div class="orch-sys-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              Support
+            </div>
+            <div class="orch-sys-item" id="orch-sys-analytics">
+              <div class="orch-sys-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="14" width="4" height="8" rx="1" fill="#f472b6" opacity="0.85"/>
+                  <rect x="9" y="9" width="4" height="13" rx="1" fill="#f472b6"/>
+                  <rect x="16" y="4" width="4" height="18" rx="1" fill="#f472b6" opacity="0.85"/>
+                </svg>
+              </div>
+              Analytics
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM: Knowledge Sources -->
+      <div class="orch-bottom-row">
+        <div class="orch-knowledge-panel">
+          <div class="orch-knowledge-inner">
+            <div class="orch-know-left">
+              <div class="orch-panel-title">Connected Knowledge Sources</div>
+              <div class="orch-know-list">
+                <div class="orch-sys-item">
+                  <div class="orch-sys-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#94a3b8" stroke-width="1.8"/>
+                      <polyline points="14,2 14,8 20,8" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round"/>
+                      <line x1="8" y1="13" x2="16" y2="13" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="8" y1="17" x2="13" y2="17" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  Internal Docs
+                </div>
+                <div class="orch-sys-item">
+                  <div class="orch-sys-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="#fbbf24" stroke-width="1.8"/>
+                      <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round"/>
+                      <circle cx="12" cy="17" r="1" fill="#fbbf24"/>
+                    </svg>
+                  </div>
+                  Product FAQs
+                </div>
+                <div class="orch-sys-item">
+                  <div class="orch-sys-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                      <path d="M9 11l3 3L22 4" stroke="#6ee7b7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="#6ee7b7" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  Policies & Guides
+                </div>
+                <div class="orch-sys-item">
+                  <div class="orch-sys-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="#c084fc" stroke-width="1.8"/>
+                      <path d="M12 16v-4M12 8h.01" stroke="#c084fc" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  Tribal Knowledge
+                </div>
+              </div>
+            </div>
+
+            <div class="orch-bottom-divider"></div>
+
+            <div class="orch-know-right">
+              <div class="orch-avatar-group">
+                <!-- Support Agents -->
+                <div class="orch-avatar-item">
+                  <div class="orch-avatar-ring">
+                    <div class="orch-avatar-inner">
+                      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#1e1b4b"/>
+                            <stop offset="100%" stop-color="#312e81"/>
+                          </linearGradient>
+                          <linearGradient id="shirt1" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#4f46e5"/>
+                            <stop offset="100%" stop-color="#3730a3"/>
+                          </linearGradient>
+                        </defs>
+                        <circle cx="40" cy="40" r="40" fill="url(#bg1)"/>
+                        <!-- body / shirt -->
+                        <ellipse cx="40" cy="72" rx="24" ry="18" fill="url(#shirt1)"/>
+                        <!-- collar -->
+                        <path d="M33,57 Q40,63 47,57 L47,72 Q40,76 33,72Z" fill="#4338ca"/>
+                        <!-- neck -->
+                        <rect x="35" y="46" width="10" height="12" rx="4" fill="#f5cba7"/>
+                        <!-- head -->
+                        <ellipse cx="40" cy="36" rx="14" ry="15" fill="#f5cba7"/>
+                        <!-- hair — dark bob -->
+                        <path d="M26,34 Q27,18 40,17 Q53,18 54,34 Q52,22 40,21 Q28,22 26,34Z" fill="#1a0a0a"/>
+                        <path d="M26,34 Q25,42 27,48 Q28,38 26,34Z" fill="#1a0a0a"/>
+                        <path d="M54,34 Q55,42 53,48 Q52,38 54,34Z" fill="#1a0a0a"/>
+                        <!-- eyes -->
+                        <ellipse cx="35" cy="35" rx="2.2" ry="2.5" fill="#2d1b00"/>
+                        <ellipse cx="45" cy="35" rx="2.2" ry="2.5" fill="#2d1b00"/>
+                        <circle cx="35.8" cy="34.2" r="0.8" fill="white"/>
+                        <circle cx="45.8" cy="34.2" r="0.8" fill="white"/>
+                        <!-- eyebrows -->
+                        <path d="M32,31 Q35,29.5 38,31" stroke="#1a0a0a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <path d="M42,31 Q45,29.5 48,31" stroke="#1a0a0a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <!-- nose -->
+                        <path d="M40,37 Q38.5,40 40,41 Q41.5,40 40,37" stroke="#d4956a" stroke-width="0.8" fill="none"/>
+                        <!-- smile -->
+                        <path d="M36,44 Q40,47.5 44,44" stroke="#c0704a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <!-- headset arc -->
+                        <path d="M27,33 Q27,20 40,20 Q53,20 53,33" stroke="#1e1b4b" stroke-width="3" fill="none"/>
+                        <!-- headset ear pieces -->
+                        <rect x="24" y="33" width="6" height="9" rx="3" fill="#4f46e5"/>
+                        <rect x="50" y="33" width="6" height="9" rx="3" fill="#4f46e5"/>
+                        <!-- mic boom -->
+                        <path d="M27,40 Q22,44 23,48" stroke="#4f46e5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                        <circle cx="23" cy="49" r="2" fill="#6366f1"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="orch-avatar-label">Support<br>Agents</div>
+                </div>
+
+                <!-- Sales Teams -->
+                <div class="orch-avatar-item">
+                  <div class="orch-avatar-ring">
+                    <div class="orch-avatar-inner">
+                      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#0c1a2e"/>
+                            <stop offset="100%" stop-color="#1e3a5f"/>
+                          </linearGradient>
+                          <linearGradient id="suit2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#1e3a5f"/>
+                            <stop offset="100%" stop-color="#0f2440"/>
+                          </linearGradient>
+                        </defs>
+                        <circle cx="40" cy="40" r="40" fill="url(#bg2)"/>
+                        <!-- suit body -->
+                        <ellipse cx="40" cy="74" rx="24" ry="16" fill="url(#suit2)"/>
+                        <!-- shirt / tie -->
+                        <path d="M37,58 L40,75 L43,58 Q40,60 37,58Z" fill="#e2e8f0"/>
+                        <!-- tie -->
+                        <path d="M39,58 L40,72 L41,58 Q40,59.5 39,58Z" fill="#ef4444"/>
+                        <!-- lapels -->
+                        <path d="M33,56 Q37,58 40,55 L40,75 Q35,73 33,68Z" fill="#1a3050"/>
+                        <path d="M47,56 Q43,58 40,55 L40,75 Q45,73 47,68Z" fill="#1a3050"/>
+                        <!-- neck -->
+                        <rect x="36" y="46" width="8" height="11" rx="3" fill="#c8956c"/>
+                        <!-- head -->
+                        <ellipse cx="40" cy="35" rx="13" ry="14" fill="#c8956c"/>
+                        <!-- short hair -->
+                        <path d="M27,33 Q28,20 40,19 Q52,20 53,33 Q51,23 40,22 Q29,23 27,33Z" fill="#1a0a00"/>
+                        <!-- side burns -->
+                        <rect x="27" y="33" width="3" height="6" rx="1.5" fill="#1a0a00"/>
+                        <rect x="50" y="33" width="3" height="6" rx="1.5" fill="#1a0a00"/>
+                        <!-- eyes -->
+                        <ellipse cx="35.5" cy="34" rx="2" ry="2.3" fill="#1a0a00"/>
+                        <ellipse cx="44.5" cy="34" rx="2" ry="2.3" fill="#1a0a00"/>
+                        <circle cx="36.2" cy="33.3" r="0.7" fill="white"/>
+                        <circle cx="45.2" cy="33.3" r="0.7" fill="white"/>
+                        <!-- eyebrows -->
+                        <path d="M33,30 Q35.5,28.5 38,30" stroke="#1a0a00" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                        <path d="M42,30 Q44.5,28.5 47,30" stroke="#1a0a00" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                        <!-- nose -->
+                        <path d="M40,36 Q38.5,39 40,40 Q41.5,39 40,36" stroke="#a06030" stroke-width="0.8" fill="none"/>
+                        <!-- smile with teeth -->
+                        <path d="M35.5,43.5 Q40,47 44.5,43.5" stroke="#a06030" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <!-- slight beard shadow -->
+                        <path d="M29,38 Q30,46 40,48 Q50,46 51,38 Q47,44 40,45 Q33,44 29,38Z" fill="#8b5e3c" opacity="0.25"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="orch-avatar-label">Sales<br>Teams</div>
+                </div>
+
+                <!-- Ops Experts -->
+                <div class="orch-avatar-item">
+                  <div class="orch-avatar-ring">
+                    <div class="orch-avatar-inner">
+                      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#0a1f2e"/>
+                            <stop offset="100%" stop-color="#0c3547"/>
+                          </linearGradient>
+                          <linearGradient id="shirt3" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#0e7490"/>
+                            <stop offset="100%" stop-color="#0a5a72"/>
+                          </linearGradient>
+                        </defs>
+                        <circle cx="40" cy="40" r="40" fill="url(#bg3)"/>
+                        <!-- body -->
+                        <ellipse cx="40" cy="73" rx="24" ry="17" fill="url(#shirt3)"/>
+                        <!-- collar -->
+                        <path d="M34,57 Q40,62 46,57 L46,73 Q40,77 34,73Z" fill="#0891b2"/>
+                        <!-- neck -->
+                        <rect x="36" y="47" width="8" height="11" rx="3" fill="#b07040"/>
+                        <!-- head -->
+                        <ellipse cx="40" cy="36" rx="13" ry="14" fill="#b07040"/>
+                        <!-- short natural hair -->
+                        <path d="M27,33 Q27,19 40,18 Q53,19 53,33 Q51,22 40,21 Q29,22 27,33Z" fill="#2a1a08"/>
+                        <!-- glasses frame -->
+                        <rect x="29" y="31.5" width="10" height="7" rx="3.5" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+                        <rect x="41" y="31.5" width="10" height="7" rx="3.5" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+                        <line x1="39" y1="35" x2="41" y2="35" stroke="#94a3b8" stroke-width="1.2"/>
+                        <line x1="27" y1="34" x2="29" y2="34" stroke="#94a3b8" stroke-width="1.2"/>
+                        <line x1="51" y1="34" x2="53" y2="34" stroke="#94a3b8" stroke-width="1.2"/>
+                        <!-- lens tint -->
+                        <rect x="29.8" y="32.3" width="8.4" height="5.4" rx="2.7" fill="#bae6fd" opacity="0.15"/>
+                        <rect x="41.8" y="32.3" width="8.4" height="5.4" rx="2.7" fill="#bae6fd" opacity="0.15"/>
+                        <!-- eyes behind glasses -->
+                        <ellipse cx="34" cy="35" rx="1.8" ry="2" fill="#2a1a08"/>
+                        <ellipse cx="46" cy="35" rx="1.8" ry="2" fill="#2a1a08"/>
+                        <circle cx="34.6" cy="34.4" r="0.6" fill="white"/>
+                        <circle cx="46.6" cy="34.4" r="0.6" fill="white"/>
+                        <!-- eyebrows -->
+                        <path d="M31,30 Q34,28.5 37,30" stroke="#2a1a08" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <path d="M43,30 Q46,28.5 49,30" stroke="#2a1a08" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                        <!-- nose -->
+                        <path d="M40,37 Q38.5,40 40,41 Q41.5,40 40,37" stroke="#8b5030" stroke-width="0.8" fill="none"/>
+                        <!-- smile -->
+                        <path d="M36,44 Q40,47.5 44,44" stroke="#8b5030" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="orch-avatar-label">Ops<br>Experts</div>
+                </div>
+
+                <!-- Customer Success -->
+                <div class="orch-avatar-item">
+                  <div class="orch-avatar-ring">
+                    <div class="orch-avatar-inner">
+                      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#1a0a2e"/>
+                            <stop offset="100%" stop-color="#2e1060"/>
+                          </linearGradient>
+                          <linearGradient id="shirt4" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#7c3aed"/>
+                            <stop offset="100%" stop-color="#5b21b6"/>
+                          </linearGradient>
+                        </defs>
+                        <circle cx="40" cy="40" r="40" fill="url(#bg4)"/>
+                        <!-- body -->
+                        <ellipse cx="40" cy="73" rx="24" ry="17" fill="url(#shirt4)"/>
+                        <!-- collar V-neck -->
+                        <path d="M34,57 Q40,64 46,57 L46,73 Q40,78 34,73Z" fill="#6d28d9"/>
+                        <!-- neck -->
+                        <rect x="36" y="47" width="8" height="11" rx="3" fill="#f2c4a0"/>
+                        <!-- head -->
+                        <ellipse cx="40" cy="36" rx="13" ry="14" fill="#f2c4a0"/>
+                        <!-- long wavy hair — back layer -->
+                        <path d="M27,28 Q24,40 25,56 Q27,44 32,40 Q28,36 27,28Z" fill="#6b2d0a"/>
+                        <path d="M53,28 Q56,40 55,56 Q53,44 48,40 Q52,36 53,28Z" fill="#6b2d0a"/>
+                        <!-- hair top -->
+                        <path d="M27,28 Q28,16 40,15 Q52,16 53,28 Q50,19 40,18 Q30,19 27,28Z" fill="#8b3a10"/>
+                        <!-- cheeks blush -->
+                        <ellipse cx="31" cy="40" rx="4" ry="2.5" fill="#ffb3a0" opacity="0.4"/>
+                        <ellipse cx="49" cy="40" rx="4" ry="2.5" fill="#ffb3a0" opacity="0.4"/>
+                        <!-- eyes -->
+                        <ellipse cx="35" cy="34" rx="2.3" ry="2.6" fill="#2d1000"/>
+                        <ellipse cx="45" cy="34" rx="2.3" ry="2.6" fill="#2d1000"/>
+                        <circle cx="35.8" cy="33.2" r="0.8" fill="white"/>
+                        <circle cx="45.8" cy="33.2" r="0.8" fill="white"/>
+                        <!-- eyelashes top -->
+                        <path d="M32.5,31.5 Q35,30 37.5,31.5" stroke="#2d1000" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                        <path d="M42.5,31.5 Q45,30 47.5,31.5" stroke="#2d1000" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                        <!-- eyebrows arched -->
+                        <path d="M32,29.5 Q35,27.5 38,29.5" stroke="#5a2000" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                        <path d="M42,29.5 Q45,27.5 48,29.5" stroke="#5a2000" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                        <!-- nose delicate -->
+                        <path d="M39,37 Q37.5,40 39,41 Q40,41.5 41,41 Q42.5,40 41,37" stroke="#d4856a" stroke-width="0.8" fill="none"/>
+                        <!-- big smile -->
+                        <path d="M34.5,44.5 Q40,49 45.5,44.5" stroke="#c0604a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                        <!-- teeth hint -->
+                        <path d="M35.5,44.5 Q40,47.5 44.5,44.5" fill="white" opacity="0.5"/>
+                        <!-- earrings -->
+                        <circle cx="27" cy="39" r="2" fill="#a855f7"/>
+                        <circle cx="53" cy="39" r="2" fill="#a855f7"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="orch-avatar-label">Customer<br>Success</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -106,3 +447,161 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Draw SVG connection lines with animated dots
+  function drawOrchLines() {
+    const svg = document.getElementById('orchSvg');
+    if (!svg) return;
+    
+    const wrapper = svg.parentElement;
+    if (!wrapper) return;
+    
+    const rect = wrapper.getBoundingClientRect();
+    svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
+    svg.innerHTML = '';
+
+    // Create gradient for lines
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    const grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+    grad.setAttribute('id', 'orchLineGrad');
+    grad.setAttribute('x1', '0%');
+    grad.setAttribute('y1', '0%');
+    grad.setAttribute('x2', '100%');
+    grad.setAttribute('y2', '0%');
+    grad.innerHTML = `
+      <stop offset="0%" style="stop-color:rgba(139,92,246,0.6);stop-opacity:1" />
+      <stop offset="50%" style="stop-color:rgba(79,142,247,0.6);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgba(139,92,246,0.6);stop-opacity:1" />
+    `;
+    defs.appendChild(grad);
+    svg.appendChild(defs);
+
+    // Helper to get element center
+    const getCenter = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const elRect = el.getBoundingClientRect();
+      const wrapperRect = wrapper.getBoundingClientRect();
+      return {
+        x: elRect.left + elRect.width / 2 - wrapperRect.left,
+        y: elRect.top + elRect.height / 2 - wrapperRect.top
+      };
+    };
+
+    // Get right edge of element
+    const getRightEdge = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const elRect = el.getBoundingClientRect();
+      const wrapperRect = wrapper.getBoundingClientRect();
+      return {
+        x: elRect.right - wrapperRect.left,
+        y: elRect.top + elRect.height / 2 - wrapperRect.top
+      };
+    };
+
+    // Get left edge of element
+    const getLeftEdge = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const elRect = el.getBoundingClientRect();
+      const wrapperRect = wrapper.getBoundingClientRect();
+      return {
+        x: elRect.left - wrapperRect.left,
+        y: elRect.top + elRect.height / 2 - wrapperRect.top
+      };
+    };
+
+    // Define connections with colors
+    const connections = [
+      { from: 'orch-ch-chat', to: 'orch-mod-ai', color: '#8b5cf6', fromEdge: 'right', toEdge: 'left' },
+      { from: 'orch-ch-mail', to: 'orch-mod-kb', color: '#4f8ef7', fromEdge: 'right', toEdge: 'left' },
+      { from: 'orch-ch-voice', to: 'orch-mod-safe', color: '#ec4899', fromEdge: 'right', toEdge: 'left' },
+      { from: 'orch-mod-ai', to: 'orch-sys-crm', color: '#8b5cf6', fromEdge: 'right', toEdge: 'left' },
+      { from: 'orch-mod-ai', to: 'orch-sys-sales', color: '#34d399', fromEdge: 'right', toEdge: 'left' },
+      { from: 'orch-mod-kb', to: 'orch-sys-support', color: '#4f8ef7', fromEdge: 'right', toEdge: 'left' },
+      { from: 'orch-mod-safe', to: 'orch-sys-analytics', color: '#f472b6', fromEdge: 'right', toEdge: 'left' }
+    ];
+
+    connections.forEach((conn, index) => {
+      let start, end;
+      
+      if (conn.fromEdge === 'right') {
+        start = getRightEdge(conn.from);
+      } else {
+        start = getCenter(conn.from);
+      }
+      
+      if (conn.toEdge === 'left') {
+        end = getLeftEdge(conn.to);
+      } else {
+        end = getCenter(conn.to);
+      }
+      
+      if (!start || !end) return;
+
+      // Create curved path
+      const midX = (start.x + end.x) / 2;
+      const d = `M ${start.x},${start.y} C ${midX},${start.y} ${midX},${end.y} ${end.x},${end.y}`;
+      
+      // Create path
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('stroke', conn.color);
+      path.setAttribute('stroke-width', '2');
+      path.setAttribute('stroke-dasharray', '8 4');
+      path.setAttribute('fill', 'none');
+      path.setAttribute('opacity', '0.5');
+      path.style.animation = `dash-flow ${2 + index * 0.2}s linear infinite`;
+      svg.appendChild(path);
+
+      // Create animated glowing dot
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('r', '4');
+      circle.setAttribute('fill', conn.color);
+      circle.setAttribute('filter', 'url(#glow)');
+      
+      // Create glow filter
+      if (index === 0) {
+        const filter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+        filter.setAttribute('id', 'glow');
+        filter.innerHTML = `
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        `;
+        defs.appendChild(filter);
+      }
+
+      // Animate dot along path
+      const animateMotion = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+      animateMotion.setAttribute('dur', `${2.5 + index * 0.3}s`);
+      animateMotion.setAttribute('repeatCount', 'indefinite');
+      animateMotion.setAttribute('path', d);
+      circle.appendChild(animateMotion);
+      
+      svg.appendChild(circle);
+    });
+  }
+
+  // Add CSS animation for dash flow
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes dash-flow {
+      from { stroke-dashoffset: 24; }
+      to { stroke-dashoffset: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Initialize on load and resize
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', drawOrchLines);
+    window.addEventListener('resize', drawOrchLines);
+    // Also draw after a short delay to ensure elements are rendered
+    setTimeout(drawOrchLines, 100);
+  }
+</script>

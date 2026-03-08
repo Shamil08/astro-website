@@ -1,0 +1,214 @@
+---
+// Platform Features section
+const features = [
+  {
+    icon: '💬',
+    color: '#4f8ef7',
+    label: 'ROUTING',
+    title: 'Structured Message Routing',
+    description: 'Intelligent routing engine that classifies, prioritizes, and directs high-volume messages across every channel — email, SMS, voice, and API webhooks.',
+    quote: 'Routes 10B+ messages monthly with deterministic delivery guarantees and zero single points of failure.'
+  },
+  {
+    icon: '🔄',
+    color: '#7c5cfc',
+    label: 'ORCHESTRATION',
+    title: 'AI Orchestration Layer',
+    description: 'A purpose-built orchestration runtime that manages AI agents at scale. Define interaction flows with deterministic constraints and runtime guardrails.',
+    quote: 'Supports multi-agent pipelines, parallel execution trees, and circuit breakers — all configurable via code or YAML.'
+  },
+  {
+    icon: '🛡️',
+    color: '#7c5cfc',
+    label: 'SAFETY',
+    title: 'Safety & Compliance Engine',
+    description: 'Every output is validated against configurable safety policies before delivery. Built-in PII detection, content filtering, and audit logging.',
+    quote: 'SOC 2 Type II, GDPR, and HIPAA-ready. Policy violations are blocked and logged in under 5ms.'
+  },
+  {
+    icon: '⚡',
+    color: '#4f8ef7',
+    label: 'AUTOMATION',
+    title: 'Workflow Automation',
+    description: 'Design complex multi-step communication workflows visually or via YAML. Conditional logic, retries, escalations, and time-based triggers included.',
+    quote: 'Drag-and-drop workflow builder with 100+ pre-built templates for common communication patterns.'
+  },
+  {
+    icon: '📊',
+    color: '#4f8ef7',
+    label: 'OBSERVABILITY',
+    title: 'Real-Time Observability',
+    description: 'Full-stack tracing, live dashboards, and alerting for every interaction. Know exactly what your system is doing — and why — at any moment.',
+    quote: 'Sub-second metric ingestion. Distributed traces across all agents, channels, and workflows in one unified view.'
+  },
+  {
+    icon: '🔒',
+    color: '#7c5cfc',
+    label: 'SECURITY',
+    title: 'Enterprise Security',
+    description: 'SOC 2 Type II, GDPR, and HIPAA-ready infrastructure. Role-based access, SSO, end-to-end encryption, and private cloud deployment options.',
+    quote: 'Zero-trust architecture with mutual TLS, key rotation, and on-premise deployment for regulated industries.'
+  }
+];
+---
+
+<section class="platform-section" id="platform">
+  <div class="platform-container">
+    <div class="platform-header reveal-up">
+      <div class="section-badge">The platform</div>
+      <h2 class="platform-title">Everything you need to ship<br/>at communication scale.</h2>
+      <p class="platform-sub">A unified infrastructure stack built for teams that can't afford message failures, latency surprises, or unpredictable AI output.</p>
+    </div>
+
+    <div class="features-list">
+      {features.map((feature, index) => (
+        <div class={`feature-item reveal-feature ${index % 2 === 1 ? 'row-reverse' : ''}`}>
+          <div class="feature-content">
+            <div class="feature-icon-row">
+              <div class="feature-icon-box" style={`background:rgba(${feature.color === '#4f8ef7' ? '79,142,247' : '124,92,252'},0.15);border-color:rgba(${feature.color === '#4f8ef7' ? '79,142,247' : '124,92,252'},0.2);`}>
+                <span class="text-2xl">{feature.icon}</span>
+              </div>
+              <span class="feature-label-pill" style={`color:${feature.color};background:rgba(${feature.color === '#4f8ef7' ? '79,142,247' : '124,92,252'},0.1);border-color:rgba(${feature.color === '#4f8ef7' ? '79,142,247' : '124,92,252'},0.2);`}>
+                {feature.label}
+              </span>
+            </div>
+            <h3 class="feature-title">{feature.title}</h3>
+            <p class="feature-desc">{feature.description}</p>
+            <blockquote class="feature-quote">{feature.quote}</blockquote>
+          </div>
+          <div class="feature-visual-wrap">
+            {feature.label === 'ROUTING' && (
+              <div class="routing-diagram">
+                <svg class="route-lines" viewBox="0 0 300 280">
+                  <line x1="150" y1="140" x2="187" y2="42" />
+                  <line x1="150" y1="140" x2="258" y2="122" />
+                  <line x1="150" y1="140" x2="118" y2="86" />
+                  <line x1="150" y1="140" x2="187" y2="222" />
+                </svg>
+                <div class="route-node route-center">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </div>
+                <div class="route-node" style="top:10%;left:58%;">Email</div>
+                <div class="route-node" style="top:42%;right:6%;">SMS</div>
+                <div class="route-node" style="top:28%;left:35%;">API</div>
+                <div class="route-node" style="bottom:16%;left:58%;">Voice</div>
+              </div>
+            )}
+            {feature.label === 'ORCHESTRATION' && (
+              <div class="orchestration-diagram">
+                <div class="orch-flow-container">
+                  <div class="orch-flow-node" style="top:20%;left:15%;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                  </div>
+                  <div class="orch-flow-node" style="top:20%;right:15%;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  </div>
+                  <div class="orch-flow-node" style="bottom:20%;left:15%;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </div>
+                  <div class="orch-center-hub">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4" />
+                    </svg>
+                  </div>
+                  <svg class="orch-lines" viewBox="0 0 300 280">
+                    <line x1="150" y1="140" x2="70" y2="70" stroke="rgba(124,92,252,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+                    <line x1="150" y1="140" x2="230" y2="70" stroke="rgba(124,92,252,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+                    <line x1="150" y1="140" x2="70" y2="210" stroke="rgba(124,92,252,0.3)" stroke-width="1.5" stroke-dasharray="4 4" />
+                  </svg>
+                </div>
+              </div>
+            )}
+            {feature.label === 'SAFETY' && (
+              <div class="safety-visual-box">
+                <div class="safety-shield">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <div class="safety-pills">
+                  <div class="safety-pill lit">PII Scan</div>
+                  <div class="safety-pill lit">Filter</div>
+                  <div class="safety-pill lit">Audit</div>
+                  <div class="safety-pill sp-approve lit">Approve</div>
+                </div>
+              </div>
+            )}
+            {feature.label === 'AUTOMATION' && (
+              <div class="wf-steps-visual">
+                <div class="wf-step done">
+                  <div class="wf-dot"></div>
+                  <span>Trigger</span>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step active">
+                  <div class="wf-dot"></div>
+                  <span>Condition</span>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                  <div class="wf-dot"></div>
+                  <span>Action</span>
+                </div>
+                <div class="wf-connector"></div>
+                <div class="wf-step">
+                  <div class="wf-dot"></div>
+                  <span>Deliver</span>
+                </div>
+              </div>
+            )}
+            {feature.label === 'OBSERVABILITY' && (
+              <div class="obs-chart">
+                <div class="obs-bars">
+                  <div class="obs-bar" style="--h: 55%;"></div>
+                  <div class="obs-bar" style="--h: 75%;"></div>
+                  <div class="obs-bar" style="--h: 45%;"></div>
+                  <div class="obs-bar obs-bar-active" style="--h: 90%;"></div>
+                  <div class="obs-bar" style="--h: 72%;"></div>
+                  <div class="obs-bar" style="--h: 60%;"></div>
+                  <div class="obs-bar" style="--h: 85%;"></div>
+                  <div class="obs-bar" style="--h: 50%;"></div>
+                </div>
+                <div class="obs-labels">
+                  <span>00h</span>
+                  <span>04h</span>
+                  <span>08h</span>
+                  <span>12h</span>
+                  <span>16h</span>
+                  <span>20h</span>
+                </div>
+              </div>
+            )}
+            {feature.label === 'SECURITY' && (
+              <div class="security-layers-diagram">
+                <div class="sec-layer sec-layer-outer">
+                  <span class="sec-layer-label">RBAC</span>
+                </div>
+                <div class="sec-layer sec-layer-middle">
+                  <span class="sec-layer-label">SSO</span>
+                </div>
+                <div class="sec-layer sec-layer-inner">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                </div>
+                <div class="sec-e2e-badge">E2E</div>
+              </div>
+            )}
+            <div class="feat-bg-glow" style={feature.label === 'ORCHESTRATION' ? 'background:radial-gradient(circle at center,rgba(124,92,252,0.15) 0%,transparent 60%);' : ''}></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
