@@ -1,40 +1,24 @@
-# Editor directories and files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# build output
+dist/
+# generated types
+.astro/
 
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
+# dependencies
+node_modules/
 
-# Logs
-*.log
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Environment variables
+
+# environment variables
 .env
-.env.local
-.env.*.local
+.env.production
 
-# Temporary files
-*.tmp
-*.temp
+# macOS-specific files
+.DS_Store
 
-# Build outputs (if you add build tools later)
-dist/
-build/
-*.min.js
-*.min.css
-
-# Dependencies (if you add npm/yarn later)
-node_modules/
-package-lock.json
-yarn.lock
-
-# Cache
-.cache/
+# jetbrains setting folder
+.idea/
