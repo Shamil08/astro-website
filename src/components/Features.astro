@@ -92,41 +92,41 @@ const features = [
                           <stop offset="100%" style="stop-color:rgba(79,142,247,0.3);stop-opacity:1" />
                         </linearGradient>
                       </defs>
-                      <line x1="150" y1="140" x2="187" y2="42" stroke="url(#routeGrad1)" stroke-width="2" stroke-dasharray="5 5" class="route-line-anim" />
-                      <line x1="150" y1="140" x2="258" y2="122" stroke="url(#routeGrad1)" stroke-width="2" stroke-dasharray="5 5" class="route-line-anim" style="animation-delay: 0.2s" />
-                      <line x1="150" y1="140" x2="118" y2="86" stroke="url(#routeGrad1)" stroke-width="2" stroke-dasharray="5 5" class="route-line-anim" style="animation-delay: 0.4s" />
-                      <line x1="150" y1="140" x2="187" y2="222" stroke="url(#routeGrad1)" stroke-width="2" stroke-dasharray="5 5" class="route-line-anim" style="animation-delay: 0.6s" />
+                      <path d="M 150 110 Q 180 84 150 58" stroke="url(#routeGrad1)" stroke-width="2" stroke-dasharray="8 4" fill="none" class="route-line-anim" />
+                      <path d="M 180 140 Q 202 170 225 140" stroke="url(#routeGrad1)" stroke-width="2" stroke-dasharray="8 4" fill="none" class="route-line-anim" style="animation-delay: 0.3s" />
+                      <path d="M 150 170 Q 120 196 150 222" stroke="url(#routeGrad1)" stroke-width="2" stroke-dasharray="8 4" fill="none" class="route-line-anim" style="animation-delay: 0.6s" />
+                      <path d="M 120 140 Q 98 110 75 140" stroke="url(#routeGrad1)" stroke-width="2" stroke-dasharray="8 4" fill="none" class="route-line-anim" style="animation-delay: 0.9s" />
                     </svg>
-                    <div class="route-node route-center">
+                    <div class="route-node route-center" style="top:50%;left:50%;transform:translate(-50%,-50%);">
                       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                       </svg>
                     </div>
-                    <div class="route-node route-endpoint" style="top:10%;left:58%;">Email</div>
-                    <div class="route-node route-endpoint" style="top:42%;right:6%;">SMS</div>
-                    <div class="route-node route-endpoint" style="top:28%;left:35%;">API</div>
-                    <div class="route-node route-endpoint" style="bottom:16%;left:58%;">Voice</div>
+                    <div class="route-node route-endpoint" style="top:15%;left:50%;transform:translate(-50%,-50%);">Email</div>
+                    <div class="route-node route-endpoint" style="top:50%;left:85%;transform:translate(-50%,-50%);">SMS</div>
+                    <div class="route-node route-endpoint" style="top:85%;left:50%;transform:translate(-50%,-50%);">Voice</div>
+                    <div class="route-node route-endpoint" style="top:50%;left:15%;transform:translate(-50%,-50%);">API</div>
                   </div>
                 )}
                 {feature.label === 'ORCHESTRATION' && (
                   <div class="orchestration-diagram">
                     <div class="orch-flow-container">
-                      <div class="orch-flow-node" style="top:20%;left:15%;">
+                      <div class="orch-flow-node" style="top:60px;left:60px;transform:translate(-50%,-50%);">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2">
                           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                         </svg>
                       </div>
-                      <div class="orch-flow-node" style="top:20%;right:15%;">
+                      <div class="orch-flow-node" style="top:60px;left:240px;transform:translate(-50%,-50%);">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2">
                           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
                         </svg>
                       </div>
-                      <div class="orch-flow-node" style="bottom:20%;left:15%;">
+                      <div class="orch-flow-node" style="top:220px;left:60px;transform:translate(-50%,-50%);">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2">
                           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                         </svg>
                       </div>
-                      <div class="orch-center-hub">
+                      <div class="orch-center-hub" style="top:140px;left:150px;transform:translate(-50%,-50%);">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2">
                           <circle cx="12" cy="12" r="3" />
                           <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4" />
@@ -139,9 +139,9 @@ const features = [
                             <stop offset="100%" style="stop-color:rgba(124,92,252,0.3);stop-opacity:1" />
                           </linearGradient>
                         </defs>
-                        <line x1="150" y1="140" x2="70" y2="70" stroke="url(#orchGrad)" stroke-width="2" stroke-dasharray="5 5" class="orch-line-anim" />
-                        <line x1="150" y1="140" x2="230" y2="70" stroke="url(#orchGrad)" stroke-width="2" stroke-dasharray="5 5" class="orch-line-anim" style="animation-delay: 0.3s" />
-                        <line x1="150" y1="140" x2="70" y2="210" stroke="url(#orchGrad)" stroke-width="2" stroke-dasharray="5 5" class="orch-line-anim" style="animation-delay: 0.6s" />
+                        <line x1="129" y1="121" x2="78" y2="76" stroke="url(#orchGrad)" stroke-width="2" stroke-dasharray="5 5" class="orch-line-anim" />
+                        <line x1="171" y1="121" x2="222" y2="76" stroke="url(#orchGrad)" stroke-width="2" stroke-dasharray="5 5" class="orch-line-anim" style="animation-delay: 0.3s" />
+                        <line x1="129" y1="159" x2="78" y2="204" stroke="url(#orchGrad)" stroke-width="2" stroke-dasharray="5 5" class="orch-line-anim" style="animation-delay: 0.6s" />
                       </svg>
                     </div>
                   </div>

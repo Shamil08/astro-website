@@ -120,7 +120,7 @@ window.addEventListener('load', function() {
   }
 
   // Trigger stats animation on scroll
-  if (document.querySelector('.stats-section')) {
+  if (document.querySelector('.stats-section') && window.innerWidth > 768) {
     const statNumbers = document.querySelectorAll('.stat-number');
     
     // Set initial state for stat items
@@ -627,26 +627,6 @@ window.addEventListener('scroll', () => {
     }, 10);
   }
 }, { passive: true });
-
-/* ── MOBILE MENU ── */
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-const menuIcon = document.getElementById('menuIcon');
-
-mobileMenuBtn.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-  menuIcon.innerHTML = isOpen
-    ? '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>'
-    : '<line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>';
-});
-
-function closeMobileMenu() {
-  mobileMenu.classList.remove('open');
-  menuIcon.innerHTML = '<line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>';
-}
-document.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(el => {
-  el.addEventListener('click', closeMobileMenu);
-});
 
 /* ── TESTIMONIALS (NEW CAROUSEL) ── */
 const testimonialsNew = [

@@ -27,7 +27,12 @@ const stats = [
 
 <script>
   // Animated counter function
-  function animateCounter(element: HTMLElement) {
+  function animateCounter(element: HTMLElement, callback?: () => void) {
+    if (element.dataset.timerId) {
+      window.clearInterval(parseInt(element.dataset.timerId));
+      element.dataset.timerId = '';
+    }
+
     const target = parseInt(element.getAttribute('data-target') || '0');
     const suffix = element.getAttribute('data-suffix') || '';
     const duration = 2000;
@@ -36,29 +41,120 @@ const stats = [
     const stepDuration = duration / steps;
     let current = 0;
 
-    const timer = setInterval(() => {
+    element.textContent = '0' + suffix;
+
+    const timer = window.setInterval(() => {
       current += increment;
       if (current >= target) {
         current = target;
-        clearInterval(timer);
+        window.clearInterval(timer);
+        element.dataset.timerId = '';
+        if (callback) callback();
       }
       element.textContent = Math.floor(current) + suffix;
     }, stepDuration);
+
+    element.dataset.timerId = timer.toString();
   }
 
-  // Trigger animation on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const counters = entry.target.querySelectorAll('.stat-number');
-        counters.forEach((counter) => animateCounter(counter as HTMLElement));
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.8 });
-
   const statsSection = document.querySelector('.stats-section');
-  if (statsSection) {
-    observer.observe(statsSection);
+  const statsContainer = document.querySelector('.stats-container') as HTMLElement;
+  const statItems = document.querySelectorAll('.stat-item');
+  const statNumbers = document.querySelectorAll('.stat-number');
+
+  if (statsSection && statsContainer && statItems.length > 0) {
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      let currentIndex = 0;
+      let transitionTimeoutId: number | null = null;
+      let pauseTimeoutId: number | null = null;
+
+      function runCarousel() {
+        statsContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        if (transitionTimeoutId !== null) window.clearTimeout(transitionTimeoutId);
+        
+        transitionTimeoutId = window.setTimeout(() => {
+          const currentNumber = statNumbers[currentIndex] as HTMLElement;
+          
+          animateCounter(currentNumber, () => {
+             // Wait briefly after animation completes before sliding to next
+             if (pauseTimeoutId !== null) window.clearTimeout(pauseTimeoutId);
+             pauseTimeoutId = window.setTimeout(() => {
+                currentIndex = (currentIndex + 1) % statItems.length;
+                runCarousel();
+             }, 2000); 
+          });
+        }, 500); // Wait for CSS transform transition
+      }
+
+      function stopCarousel() {
+        if (transitionTimeoutId !== null) {
+          window.clearTimeout(transitionTimeoutId);
+          transitionTimeoutId = null;
+        }
+        if (pauseTimeoutId !== null) {
+          window.clearTimeout(pauseTimeoutId);
+          pauseTimeoutId = null;
+        }
+        
+        const currentNumber = statNumbers[currentIndex] as HTMLElement;
+        if (currentNumber && currentNumber.dataset.timerId) {
+          window.clearInterval(parseInt(currentNumber.dataset.timerId));
+          currentNumber.dataset.timerId = '';
+        }
+      }
+
+      function goToNext() {
+        stopCarousel();
+        currentIndex = (currentIndex + 1) % statItems.length;
+        runCarousel();
+      }
+
+      function goToPrev() {
+        stopCarousel();
+        currentIndex = (currentIndex - 1 + statItems.length) % statItems.length;
+        runCarousel();
+      }
+
+      // Touch events for swiping
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      statsContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      statsContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+          // Swipe left (next item)
+          goToNext();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+          // Swipe right (prev item)
+          goToPrev();
+        }
+      }
+
+      const mobileObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            runCarousel();
+            mobileObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      mobileObserver.observe(statsSection);
+
+    } else {
+      // Desktop behavior is handled by GSAP in app.js
+    }
   }
 </script>
