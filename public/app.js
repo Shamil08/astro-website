@@ -6,7 +6,7 @@
 // Ensure content is visible first
 document.body.style.opacity = '1';
 
-window.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
   // Check if GSAP is loaded with error handling
   if (typeof gsap === 'undefined') {
@@ -1086,6 +1086,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
       modal.classList.add('modal-open');
       document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      document.documentElement.style.overflow = 'hidden'; // Ensure HTML tag is locked too
     }
   };
 
@@ -1094,6 +1095,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
       modal.classList.remove('modal-open');
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
 
       // Optionally reset form on close
       // if (form) form.reset();
