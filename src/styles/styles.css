@@ -643,7 +643,7 @@ body.menu-open {
 
 @media (max-width: 768px) {
   .badge {
-    margin-bottom: 4.5rem !important;
+    margin-bottom: 0.75rem;
   }
 }
 
@@ -4563,7 +4563,7 @@ body.menu-open {
 
   /* Hero */
   .hero-section {
-    padding: 12rem 1.25rem 4rem;
+    padding: 6rem 1.25rem 3rem;
     min-height: auto;
   }
 
