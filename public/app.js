@@ -6,8 +6,8 @@
 // Ensure content is visible first
 document.body.style.opacity = '1';
 
-window.addEventListener('load', function() {
-  
+window.addEventListener('load', function () {
+
   // Check if GSAP is loaded with error handling
   if (typeof gsap === 'undefined') {
     console.warn('GSAP not loaded - animations will be disabled');
@@ -44,9 +44,9 @@ window.addEventListener('load', function() {
   const revealElements = gsap.utils.toArray('.reveal, .reveal-up, .reveal-feature, .reveal-left, .reveal-right');
 
   revealElements.forEach((element) => {
-    const direction = element.classList.contains('reveal-left') ? -40 : 
-                     element.classList.contains('reveal-right') ? 40 : 0;
-    
+    const direction = element.classList.contains('reveal-left') ? -40 :
+      element.classList.contains('reveal-right') ? 40 : 0;
+
     gsap.from(element, {
       opacity: 0,
       y: direction === 0 ? 40 : 0,
@@ -65,7 +65,7 @@ window.addEventListener('load', function() {
   // Platform features - ensure visibility first
   if (document.querySelector('.features-list')) {
     gsap.set('.feature-item', { opacity: 1, y: 0 });
-    
+
     gsap.from('.feature-item', {
       opacity: 0,
       y: 50,
@@ -82,7 +82,7 @@ window.addEventListener('load', function() {
   // Stats row - ensure visibility first
   if (document.querySelector('.trust-badges')) {
     gsap.set('.trust-badge', { opacity: 1, scale: 1 });
-    
+
     gsap.from('.trust-badge', {
       opacity: 0,
       scale: 0.8,
@@ -92,63 +92,6 @@ window.addEventListener('load', function() {
       scrollTrigger: {
         trigger: '.trust-badges',
         start: 'top 85%'
-      }
-    });
-  }
-
-  /* ── STATS COUNTER ANIMATION ── */
-  function animateCounter(element) {
-    const target = parseFloat(element.dataset.target);
-    const prefix = element.dataset.prefix || '';
-    const suffix = element.dataset.suffix || '';
-    const duration = 2000; // 2 seconds
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
-    const isDecimal = target % 1 !== 0;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      
-      const displayValue = isDecimal ? current.toFixed(2) : Math.floor(current);
-      element.textContent = prefix + displayValue + suffix;
-    }, duration / steps);
-  }
-
-  // Trigger stats animation on scroll
-  if (document.querySelector('.stats-section') && window.innerWidth > 768) {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    
-    // Set initial state for stat items
-    gsap.set('.stat-item', { opacity: 0, y: 40 });
-    
-    ScrollTrigger.create({
-      trigger: '.stats-section',
-      start: 'top 80%',
-      once: true,
-      onEnter: () => {
-        statNumbers.forEach((stat, index) => {
-          setTimeout(() => {
-            animateCounter(stat);
-          }, index * 100); // Stagger each stat by 100ms
-        });
-      }
-    });
-
-    // Animate the stat items rising from bottom
-    gsap.to('.stat-item', {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.stats-section',
-        start: 'top 80%'
       }
     });
   }
@@ -163,10 +106,10 @@ window.addEventListener('load', function() {
     // Ensure timeline elements are visible by default
     gsap.set('.how-step-content', { opacity: 1, x: 0 });
     gsap.set('.how-step-number-bg', { opacity: 1, scale: 1 });
-    
+
     // Smooth timeline animation using requestAnimationFrame
     let ticking = false;
-    
+
     ScrollTrigger.create({
       trigger: '.how-steps-wrap',
       start: 'top center',
@@ -179,33 +122,36 @@ window.addEventListener('load', function() {
             const wrapElement = document.querySelector('.how-steps-wrap');
             const wrapHeight = wrapElement.offsetHeight;
             const wrapTop = wrapElement.offsetTop;
-            const fillHeight = progress * wrapHeight;
-            
+            // Adjust fill height based on viewport
+            let offset = 0;
+            if (window.innerWidth <= 768) offset = 144; // Approx 9rem padding offset manually defined in CSS
+
+            const fillHeight = progress * (wrapHeight - offset);
             // Update line fill height smoothly
             howLineFill.style.height = fillHeight + 'px';
-            
+
             // Update dot position smoothly
             if (howTimelineDot) {
               howTimelineDot.style.top = fillHeight + 'px';
             }
-            
+
             // Activate nodes when progress line reaches them
             timelineNodes.forEach((node, index) => {
               const stepElement = howSteps[index];
               const stepCenter = stepElement.offsetTop + (stepElement.offsetHeight / 2);
               const stepCenterRelative = stepCenter - wrapTop;
-              
-              // Activate node when progress line is within 30px of the node center
-              if (fillHeight >= stepCenterRelative - 30) {
+
+              // Activate node when progress line is within 30px of the node center, OR if it's the last node and we are at the very bottom
+              if (fillHeight >= stepCenterRelative - 30 || (index === timelineNodes.length - 1 && progress > 0.95)) {
                 node.classList.add('active');
               } else {
                 node.classList.remove('active');
               }
             });
-            
+
             ticking = false;
           });
-          
+
           ticking = true;
         }
       }
@@ -251,7 +197,7 @@ window.addEventListener('load', function() {
   /* ── SOLUTIONS TABS ANIMATION ── */
   if (document.querySelector('.solutions-card')) {
     gsap.set('.sol-tab', { opacity: 1, x: 0 });
-    
+
     gsap.from('.sol-tab', {
       opacity: 0,
       x: -30,
@@ -269,7 +215,7 @@ window.addEventListener('load', function() {
   if (document.querySelector('.orchestration-diagram-box')) {
     const orchItems = gsap.utils.toArray('.orch-item, .orch-platform-card, .orch-bottom-item, .orch-avatar');
     gsap.set(orchItems, { opacity: 1, y: 0 });
-    
+
     // Create timeline for orchestrated sequence
     const orchTimeline = gsap.timeline({
       scrollTrigger: {
@@ -278,7 +224,7 @@ window.addEventListener('load', function() {
         toggleActions: 'play none none none'
       }
     });
-    
+
     // Main container entrance with scale
     orchTimeline.from('.orchestration-diagram-box', {
       opacity: 0,
@@ -287,7 +233,7 @@ window.addEventListener('load', function() {
       duration: 1.2,
       ease: 'power3.out'
     });
-    
+
     // Title animation
     orchTimeline.from('.orch-column-title', {
       opacity: 0,
@@ -296,7 +242,7 @@ window.addEventListener('load', function() {
       stagger: 0.15,
       ease: 'power2.out'
     }, '-=0.6');
-    
+
     // Left column items - cascade from top
     orchTimeline.from('.orch-left .orch-item', {
       opacity: 0,
@@ -306,7 +252,7 @@ window.addEventListener('load', function() {
       stagger: 0.12,
       ease: 'power3.out'
     }, '-=0.4');
-    
+
     // Center platform cards - dramatic entrance with glow
     orchTimeline.from('.orch-platform-title', {
       opacity: 0,
@@ -314,7 +260,7 @@ window.addEventListener('load', function() {
       duration: 0.8,
       ease: 'back.out(2)'
     }, '-=0.3');
-    
+
     orchTimeline.from('.orch-platform-card', {
       opacity: 0,
       scale: 0.7,
@@ -323,7 +269,7 @@ window.addEventListener('load', function() {
       duration: 1,
       stagger: 0.2,
       ease: 'elastic.out(1, 0.6)',
-      onComplete: function() {
+      onComplete: function () {
         // Add continuous pulse to platform cards
         gsap.to('.orch-platform-card', {
           boxShadow: '0 12px 40px rgba(79, 142, 247, 0.5), 0 0 80px rgba(124, 92, 252, 0.4)',
@@ -335,7 +281,7 @@ window.addEventListener('load', function() {
         });
       }
     }, '-=0.5');
-    
+
     // Right column items - cascade from top
     orchTimeline.from('.orch-right .orch-item', {
       opacity: 0,
@@ -345,7 +291,7 @@ window.addEventListener('load', function() {
       stagger: 0.1,
       ease: 'power3.out'
     }, '-=1.2');
-    
+
     // Connection lines - sequential flow animation
     orchTimeline.from('.orch-line', {
       strokeDashoffset: 200,
@@ -357,7 +303,7 @@ window.addEventListener('load', function() {
       },
       ease: 'power2.inOut'
     }, '-=1');
-    
+
     // Bottom section
     orchTimeline.from('.orch-bottom', {
       opacity: 0,
@@ -365,7 +311,7 @@ window.addEventListener('load', function() {
       duration: 1,
       ease: 'power2.out'
     }, '-=0.8');
-    
+
     // Add floating animation to platform cards
     gsap.to('.orch-platform-card', {
       y: -8,
@@ -375,7 +321,7 @@ window.addEventListener('load', function() {
       ease: 'sine.inOut',
       stagger: 0.4
     });
-    
+
     // Add subtle rotation animation to icons
     gsap.to('.orch-card-icon', {
       rotation: 5,
@@ -385,7 +331,7 @@ window.addEventListener('load', function() {
       ease: 'sine.inOut',
       stagger: 0.5
     });
-    
+
     // Hover interactions for items
     document.querySelectorAll('.orch-item').forEach(item => {
       item.addEventListener('mouseenter', () => {
@@ -396,7 +342,7 @@ window.addEventListener('load', function() {
           ease: 'power2.out'
         });
       });
-      
+
       item.addEventListener('mouseleave', () => {
         gsap.to(item, {
           scale: 1,
@@ -406,7 +352,7 @@ window.addEventListener('load', function() {
         });
       });
     });
-    
+
     // Enhanced hover for platform cards
     document.querySelectorAll('.orch-platform-card').forEach(card => {
       card.addEventListener('mouseenter', () => {
@@ -418,7 +364,7 @@ window.addEventListener('load', function() {
           ease: 'power2.out'
         });
       });
-      
+
       card.addEventListener('mouseleave', () => {
         gsap.to(card, {
           scale: 1,
@@ -434,7 +380,7 @@ window.addEventListener('load', function() {
   /* ── USE CASES ANIMATION ── */
   if (document.querySelector('.uc-tabs-horizontal')) {
     gsap.set('.uc-tab-h', { opacity: 1, y: 0 });
-    
+
     gsap.from('.uc-tab-h', {
       opacity: 0,
       y: 20,
@@ -452,7 +398,7 @@ window.addEventListener('load', function() {
   if (document.querySelector('.pricing-section')) {
     const pricingCards = gsap.utils.toArray('.pricing-card');
     gsap.set(pricingCards, { opacity: 1, y: 0 });
-    
+
     gsap.from(pricingCards, {
       opacity: 0,
       y: 40,
@@ -468,7 +414,7 @@ window.addEventListener('load', function() {
     // Animate CTA block
     if (document.querySelector('.pricing-cta-block')) {
       gsap.set('.pricing-cta-block', { opacity: 1, y: 0 });
-      
+
       gsap.from('.pricing-cta-block', {
         opacity: 0,
         y: 40,
@@ -505,24 +451,24 @@ window.addEventListener('load', function() {
       duration: 0.6,
       ease: 'power2.out'
     })
-    .from(quoteIcon, {
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.4,
-      ease: 'back.out(1.7)'
-    }, '-=0.3')
-    .from(text, {
-      opacity: 0,
-      y: 20,
-      duration: 0.5,
-      ease: 'power2.out'
-    }, '-=0.2')
-    .from(footer, {
-      opacity: 0,
-      y: 20,
-      duration: 0.5,
-      ease: 'power2.out'
-    }, '-=0.3');
+      .from(quoteIcon, {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.4,
+        ease: 'back.out(1.7)'
+      }, '-=0.3')
+      .from(text, {
+        opacity: 0,
+        y: 20,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, '-=0.2')
+      .from(footer, {
+        opacity: 0,
+        y: 20,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, '-=0.3');
   }
 
   /* ── HERO SECTION ANIMATION ── */
@@ -582,19 +528,19 @@ window.addEventListener('load', function() {
   if (document.getElementById('testimonialCardNew')) {
     buildTestimonialDotsNew();
     renderTestimonialNew(0);
-    
+
     // Add hover listeners to pause/resume autoplay
     const card = document.getElementById('testimonialCardNew');
     card.addEventListener('mouseenter', () => {
       isHoveringTestimonial = true;
       stopAutoplayNew();
     });
-    
+
     card.addEventListener('mouseleave', () => {
       isHoveringTestimonial = false;
       startAutoplayNew();
     });
-    
+
     // Start autoplay
     startAutoplayNew();
   }
@@ -610,6 +556,61 @@ window.addEventListener('load', function() {
 
 }); // End window load
 
+/* ── DESKTOP STATS ANIMATION (INDEPENDENT) ── */
+document.addEventListener('DOMContentLoaded', function () {
+  // Desktop stats animation function
+  function animateCounter(element) {
+    const target = parseFloat(element.dataset.target);
+    const prefix = element.dataset.prefix || '';
+    const suffix = element.dataset.suffix || '';
+    const duration = 2000;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+    const isDecimal = target % 1 !== 0;
+
+    console.log('Animating counter:', element, 'target:', target);
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+
+      const displayValue = isDecimal ? current.toFixed(2) : Math.floor(current);
+      element.textContent = prefix + displayValue + suffix;
+    }, duration / steps);
+  }
+
+  // Check if it's desktop and stats section exists
+  if (window.innerWidth > 768) {
+    const statsSection = document.querySelector('.stats-section');
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+    console.log('Desktop stats init:', { statsSection, statNumbers: statNumbers.length });
+
+    if (statsSection && statNumbers.length > 0) {
+      // Simple intersection observer for desktop
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            console.log('Stats section visible, starting animations');
+            statNumbers.forEach((stat, index) => {
+              setTimeout(() => {
+                animateCounter(stat);
+              }, index * 200);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(statsSection);
+    }
+  }
+});
+
 /* ── NAVBAR SCROLL EFFECT (OPTIMIZED) ── */
 const navbar = document.getElementById('navbar');
 let scrollTimeout;
@@ -617,7 +618,7 @@ let lastScrollY = 0;
 
 window.addEventListener('scroll', () => {
   const currentScrollY = window.scrollY;
-  
+
   // Only update if scroll position changed significantly
   if (Math.abs(currentScrollY - lastScrollY) > 5) {
     clearTimeout(scrollTimeout);
@@ -632,34 +633,34 @@ window.addEventListener('scroll', () => {
 const testimonialsNew = [
   {
     quote: 'RYX AI replaced three separate vendors and an internal microservice team. We now handle 40M messages a day through a single, predictable system.',
-    name: 'Marcus Chen', 
-    title: 'VP of Engineering', 
-    company: 'Apex Financial', 
-    initials: 'MC', 
+    name: 'Marcus Chen',
+    title: 'VP of Engineering',
+    company: 'Apex Financial',
+    initials: 'MC',
     color: '#4f8ef7',
   },
   {
     quote: 'The safety layer is what sold us. We can deploy AI-generated responses to patients knowing every message has been validated before it goes out.',
-    name: 'Dr. Priya Nair', 
-    title: 'Chief Digital Officer', 
-    company: 'MedCore Health', 
-    initials: 'PN', 
+    name: 'Dr. Priya Nair',
+    title: 'Chief Digital Officer',
+    company: 'MedCore Health',
+    initials: 'PN',
     color: '#7c5cfc',
   },
   {
     quote: "Finally, infrastructure that can keep up with us. Black Friday, Prime Day — it doesn't matter. RYX AI doesn't flinch.",
-    name: 'Jordan Kim', 
-    title: 'CTO', 
-    company: 'ShopStream', 
-    initials: 'JK', 
+    name: 'Jordan Kim',
+    title: 'CTO',
+    company: 'ShopStream',
+    initials: 'JK',
     color: '#4f8ef7',
   },
   {
     quote: 'We cut communication failure incidents by 94% in the first month. The observability tooling alone was worth the switch.',
-    name: 'Amara Osei', 
-    title: 'Head of Platform', 
-    company: 'TransitGov', 
-    initials: 'AO', 
+    name: 'Amara Osei',
+    title: 'Head of Platform',
+    company: 'TransitGov',
+    initials: 'AO',
     color: '#7c5cfc',
   },
 ];
@@ -703,7 +704,7 @@ function renderTestimonialNew(index) {
 function buildTestimonialDotsNew() {
   const dotsContainer = document.getElementById('testimonialDotsNew');
   if (!dotsContainer) return;
-  
+
   dotsContainer.innerHTML = testimonialsNew.map((_, i) => `
     <button class="testimonial-dot-new ${i === 0 ? 'active' : ''}" 
             onclick="goToTestimonialNew(${i})" 
@@ -775,7 +776,7 @@ let testimonialTimer = null;
 function renderTestimonial(index, direction = 1) {
   const body = document.getElementById('testimonialBody');
   if (!body) return;
-  
+
   const t = testimonials[index];
   const glow = document.getElementById('testimonialGlow');
   const qm = document.getElementById('tQuoteMark');
@@ -803,7 +804,7 @@ function renderTestimonial(index, direction = 1) {
 function buildTestimonialDots() {
   const dots = document.getElementById('testimonialDots');
   if (!dots) return;
-  
+
   dots.innerHTML = testimonials.map((_, i) => `
     <button class="dot ${i === 0 ? 'active' : ''}" onclick="goToTestimonial(${i})" aria-label="Testimonial ${i + 1}"></button>
   `).join('');
@@ -920,7 +921,7 @@ document.querySelectorAll('.uc-tab-h').forEach(tab => {
 function startBarCycling() {
   const bars = document.querySelectorAll('.obs-bar:not(.obs-bar-active)');
   if (!bars.length) return;
-  
+
   const patterns = [
     [55, 75, 45, 90, 72],
     [80, 40, 95, 55, 70],
@@ -928,7 +929,7 @@ function startBarCycling() {
     [45, 70, 88, 52, 68],
   ];
   let p = 0;
-  
+
   function pulse() {
     const pat = patterns[p % patterns.length];
     bars.forEach((b, i) => {
@@ -938,7 +939,7 @@ function startBarCycling() {
     p++;
     setTimeout(pulse, 2200);
   }
-  
+
   pulse();
 }
 
@@ -1066,3 +1067,129 @@ document.querySelectorAll('.arch-diagram, .stats-row').forEach(el => {
   if (!content) return;
   content.style.animation = 'heroFloat 6s ease-in-out infinite';
 })();
+
+
+/* ============================================================
+   BOOK MEETING MODAL LOGIC
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('bookMeetingModal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const form = document.getElementById('bookMeetingForm');
+
+  // Find all buttons that should open the modal
+  const openButtons = document.querySelectorAll('[data-modal-trigger="book-meeting"]');
+
+  // Open Modal
+  const openModal = (e) => {
+    e.preventDefault();
+    if (modal) {
+      modal.classList.add('modal-open');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+  };
+
+  // Close Modal
+  const closeModal = () => {
+    if (modal) {
+      modal.classList.remove('modal-open');
+      document.body.style.overflow = '';
+
+      // Optionally reset form on close
+      // if (form) form.reset();
+    }
+  };
+
+  // Attach event listeners to all trigger buttons
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
+  // Close on X button click
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeModal);
+  }
+
+  // Close on click outside the inner container
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  }
+
+  // Close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('modal-open')) {
+      closeModal();
+    }
+  });
+
+  // Handle Form Submission
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('.modal-submit-btn');
+      const originalText = submitBtn.innerHTML;
+
+      // Change button state
+      submitBtn.innerHTML = '<span>Sending...</span>';
+      submitBtn.disabled = true;
+
+      // Extract form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      // -------------------------------------------------------------
+      // ?? UPDATE THIS URL to your Google Apps Script / Make.com Webhook 
+      // -------------------------------------------------------------
+      const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzeX4n5N0BttcQcE2oYwVl_4Dno12Qlo6QO7xhMU6KaU5lgw4Q5S4_H-sFW6O69nXas/exec';
+
+      try {
+        console.log("Submitting lead data:", data);
+
+        // Actual network request to Google Apps Script Webhook
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Required for Google Scripts to avoid CORS block
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        // Success State
+        submitBtn.innerHTML = '<span>Request Sent!</span><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+        submitBtn.style.background = '#10b981'; // Success green
+
+        // Close modal after success
+        setTimeout(() => {
+          closeModal();
+          form.reset();
+
+          // Reset button to original state
+          setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+          }, 300);
+
+        }, 2000);
+
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        submitBtn.innerHTML = '<span>Error! Try Again</span>';
+        submitBtn.style.background = '#ef4444'; // Error red
+
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 3000);
+      }
+    });
+  }
+});
+

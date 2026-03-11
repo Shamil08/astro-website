@@ -88,10 +88,10 @@
     ];
 
     let currentTestimonial = 0;
-    let autoRotateInterval = null;
+    let autoRotateInterval: number | null = null;
 
     // Render testimonial content
-    function renderTestimonial(index) {
+    function renderTestimonial(index: number) {
       const testimonial = testimonials[index];
       const contentEl = document.getElementById('testimonialContent');
       const companyTagEl = document.getElementById('testimonialCompanyTag');

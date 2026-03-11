@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Privacy Policy - RYX AI">
+  <Navbar />
+  
+  <main class="legal-page">
+    <div class="legal-container">
+      <div class="legal-header">
+        <h1 class="legal-title">Privacy Policy</h1>
+        <p class="legal-updated">Last Updated: March 2026</p>
+      </div>
+
+      <div class="legal-content">
+        <section>
+          <h2>1. Introduction</h2>
+          <p>At RYX AI, we respect your privacy and are committed to protecting it through our compliance with this policy. This policy describes the types of information we may collect from you or that you may provide when you visit the website.</p>
+        </section>
+
+        <section>
+          <h2>2. Information We Collect</h2>
+          <p>We collect several types of information from and about users of our Website, including information by which you may be personally identified, such as name, postal address, e-mail address, telephone number, and business details.</p>
+        </section>
+
+        <section>
+          <h2>3. How We Collect Information</h2>
+          <p>We collect this information directly from you when you provide it to us, automatically as you navigate through the site (such as usage details, IP addresses, and information collected through cookies), and from third parties.</p>
+        </section>
+
+        <section>
+          <h2>4. Use of Your Information</h2>
+          <p>We use information that we collect about you or that you provide to us to present our Website and its contents, provide you with notices about your account, carry out our obligations and enforce our rights arising from any contracts entered into between you and us, and notify you about changes to our Website or products/services.</p>
+        </section>
+        
+        <section>
+          <h2>5. SMS & Communication Opt-In</h2>
+          <p>By providing your phone number on our website forms, you consent to receive SMS communications from RYX AI regarding your inquiry, service updates, and occasional promotional materials. Standard message and data rates may apply. You can opt-out at any time by replying "STOP" to any message we send. Your mobile information will not be shared with third parties/affiliates for marketing/promotional purposes.</p>
+        </section>
+
+        <section>
+          <h2>6. Data Security</h2>
+          <p>We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. Unfortunately, the transmission of information via the internet is not completely secure, and we cannot guarantee the security of your personal information transmitted to our Website.</p>
+        </section>
+
+        <section>
+          <h2>7. Contact Information</h2>
+          <p>To ask questions or comment about this privacy policy and our privacy practices, contact us at: privacy@ryx.ai</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 150px 2rem 100px;
+    min-height: 100vh;
+    background: var(--bg);
+  }
+
+  .legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 4rem;
+  }
+
+  .legal-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .legal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-updated {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .legal-content section {
+    margin-bottom: 3rem;
+  }
+
+  .legal-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content p {
+    color: var(--muted-2);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      padding: 2rem;
+    }
+    
+    .legal-page {
+      padding: 120px 1rem 80px;
+    }
+
+    .legal-title {
+      font-size: 2rem;
+    }
+  }
+</style>

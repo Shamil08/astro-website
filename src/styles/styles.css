@@ -499,6 +499,7 @@ ul {
 }
 
 @media (max-width: 768px) {
+
   .nav-links,
   .nav-auth {
     display: none;
@@ -509,43 +510,43 @@ ul {
     align-items: center;
     justify-content: center;
   }
-  
+
   .nav-container {
     padding: 0 1rem;
   }
-  
+
   .navbar {
     padding: 0.75rem 0;
   }
-  
+
   /* Hero mobile spacing improvements */
   .hero-section {
     padding: 18rem 2.5rem 10rem;
     min-height: auto;
   }
-  
+
   .badge {
     margin-bottom: 4.5rem;
     padding: 1rem 2rem;
   }
-  
+
   .hero-title {
     margin-bottom: 5rem;
   }
-  
+
   .hero-subtitle {
     margin-bottom: 6rem;
     line-height: 2;
     padding: 0 1.5rem;
   }
-  
+
   .hero-cta-group {
     margin-bottom: 6rem;
     gap: 2rem;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .btn-hero-primary,
   .btn-hero-outline {
     padding: 1.5rem 3rem;
@@ -553,25 +554,25 @@ ul {
     width: 100%;
     max-width: 300px;
   }
-  
+
   .trust-badges {
     gap: 2.5rem;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .trust-badge {
     padding: 1.5rem 2rem;
     width: 100%;
     max-width: 320px;
     justify-content: center;
   }
-  
+
   /* Stats section mobile spacing */
   .stats-section {
     margin: 6rem 0;
   }
-  
+
   /* General section spacing for mobile */
   section {
     margin-bottom: 4rem;
@@ -582,7 +583,7 @@ ul {
   .mobile-menu {
     display: none !important;
   }
-  
+
   .mobile-menu-btn {
     display: none !important;
   }
@@ -2082,6 +2083,7 @@ body.menu-open {
 
 .solutions-header {
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 .solutions-title {
@@ -2092,6 +2094,7 @@ body.menu-open {
   line-height: 1.2;
   color: #fff;
   margin: 0;
+  text-align: center;
 }
 
 /* Main card container */
@@ -4152,6 +4155,7 @@ body.menu-open {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(0, 0, 0, 0.3);
   padding: 4rem 2.5rem 2rem;
+  margin-top: auto;
 }
 
 .footer-container {
@@ -4205,7 +4209,7 @@ body.menu-open {
 /* Right Side: Link Columns */
 .footer-links-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
 }
 
@@ -4363,7 +4367,7 @@ body.menu-open {
   }
 
   .footer-links-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 
@@ -4496,29 +4500,55 @@ body.menu-open {
     height: auto;
   }
 
-  /* Stats Carousel on mobile */
+  /* Stats Grid Layout on mobile (2x2) */
   .stats-container {
-    display: flex;
-    flex-wrap: nowrap;
-    padding: 0;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    margin: 0;
+    height: auto;
+    overflow: visible;
   }
 
   .stat-item {
-    flex: 0 0 100%;
-    min-width: 100%;
+    flex: none;
+    min-height: 120px;
+    max-height: 120px;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+  }
+
+  .stat-item .stat-number {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-item .stat-label {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+
+  .stat-item .stat-sublabel {
+    font-size: 0.75rem;
   }
 
   .stat-item:nth-child(n+5) {
-    display: block;
+    display: flex;
   }
 
   .stat-divider {
     display: none;
-  }
-
-  .stat-item {
-    padding: 1.5rem 2.5rem;
   }
 
   /* Navbar */
@@ -4764,7 +4794,7 @@ body.menu-open {
     display: block;
     left: 20px;
     top: 5rem;
-    bottom: 5rem;
+    height: calc(100% - 9rem);
   }
 
   .how-center-line-fill {
@@ -4975,5 +5005,225 @@ body.menu-open {
   a[href]:after {
     content: " (" attr(href) ")";
     font-size: 0.8em;
+  }
+}
+
+/* ============================================================
+   BOOK MEETING MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 5, 8, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-open {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
+.modal-container {
+  position: relative;
+  background: rgba(14, 15, 23, 0.95);
+  border: 1px solid var(--border-2);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-open .modal-container {
+  transform: translateY(0);
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Header */
+.modal-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.modal-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Form Styles */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: var(--muted-2);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-left: 0.25rem;
+}
+
+.form-group input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  transition: all var(--transition-fast);
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: rgba(79, 142, 247, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 4px rgba(79, 142, 247, 0.1);
+}
+
+/* Submit Button */
+.modal-submit-btn {
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: #fff;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 15px rgba(79, 142, 247, 0.3);
+}
+
+.modal-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 142, 247, 0.4);
+}
+
+.modal-submit-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.modal-submit-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.modal-disclaimer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+.modal-link {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Compliance Checkbox */
+.form-checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.form-checkbox-group input[type="checkbox"] {
+  appearance: auto;
+  /* Fallback */
+  -webkit-appearance: checkbox;
+  margin-top: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
+.checkbox-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label .modal-link {
+  font-weight: 500;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
   }
 }

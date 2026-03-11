@@ -26,135 +26,69 @@ const stats = [
 </section>
 
 <script>
-  // Animated counter function
-  function animateCounter(element: HTMLElement, callback?: () => void) {
-    if (element.dataset.timerId) {
-      window.clearInterval(parseInt(element.dataset.timerId));
-      element.dataset.timerId = '';
+  // Mobile stats grid animation (2x2 layout)
+  function initStatsGrid() {
+    const statsSection = document.querySelector('.stats-section');
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+    if (!statsSection || statNumbers.length === 0) {
+      console.log('Stats elements not found');
+      return;
     }
 
-    const target = parseInt(element.getAttribute('data-target') || '0');
-    const suffix = element.getAttribute('data-suffix') || '';
-    const duration = 2000;
-    const steps = 60;
-    const increment = target / steps;
-    const stepDuration = duration / steps;
-    let current = 0;
-
-    element.textContent = '0' + suffix;
-
-    const timer = window.setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        window.clearInterval(timer);
-        element.dataset.timerId = '';
-        if (callback) callback();
-      }
-      element.textContent = Math.floor(current) + suffix;
-    }, stepDuration);
-
-    element.dataset.timerId = timer.toString();
-  }
-
-  const statsSection = document.querySelector('.stats-section');
-  const statsContainer = document.querySelector('.stats-container') as HTMLElement;
-  const statItems = document.querySelectorAll('.stat-item');
-  const statNumbers = document.querySelectorAll('.stat-number');
-
-  if (statsSection && statsContainer && statItems.length > 0) {
     const isMobile = window.innerWidth <= 768;
+    console.log('Stats grid init - Mobile:', isMobile, 'Items:', statNumbers.length);
 
     if (isMobile) {
-      let currentIndex = 0;
-      let transitionTimeoutId: number | null = null;
-      let pauseTimeoutId: number | null = null;
+      function animateNumber(element: HTMLElement, delay = 0) {
+        setTimeout(() => {
+          const target = parseInt(element.getAttribute('data-target') || '0');
+          const suffix = element.getAttribute('data-suffix') || '';
+          const duration = 1500;
+          const steps = 50;
+          const increment = target / steps;
+          let current = 0;
 
-      function runCarousel() {
-        statsContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
-        if (transitionTimeoutId !== null) window.clearTimeout(transitionTimeoutId);
-        
-        transitionTimeoutId = window.setTimeout(() => {
-          const currentNumber = statNumbers[currentIndex] as HTMLElement;
-          
-          animateCounter(currentNumber, () => {
-             // Wait briefly after animation completes before sliding to next
-             if (pauseTimeoutId !== null) window.clearTimeout(pauseTimeoutId);
-             pauseTimeoutId = window.setTimeout(() => {
-                currentIndex = (currentIndex + 1) % statItems.length;
-                runCarousel();
-             }, 2000); 
-          });
-        }, 500); // Wait for CSS transform transition
+          // Reset to 0 first
+          element.textContent = '0' + suffix;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            element.textContent = Math.floor(current) + suffix;
+          }, duration / steps);
+        }, delay);
       }
 
-      function stopCarousel() {
-        if (transitionTimeoutId !== null) {
-          window.clearTimeout(transitionTimeoutId);
-          transitionTimeoutId = null;
-        }
-        if (pauseTimeoutId !== null) {
-          window.clearTimeout(pauseTimeoutId);
-          pauseTimeoutId = null;
-        }
-        
-        const currentNumber = statNumbers[currentIndex] as HTMLElement;
-        if (currentNumber && currentNumber.dataset.timerId) {
-          window.clearInterval(parseInt(currentNumber.dataset.timerId));
-          currentNumber.dataset.timerId = '';
-        }
-      }
-
-      function goToNext() {
-        stopCarousel();
-        currentIndex = (currentIndex + 1) % statItems.length;
-        runCarousel();
-      }
-
-      function goToPrev() {
-        stopCarousel();
-        currentIndex = (currentIndex - 1 + statItems.length) % statItems.length;
-        runCarousel();
-      }
-
-      // Touch events for swiping
-      let touchStartX = 0;
-      let touchEndX = 0;
-
-      statsContainer.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
-
-      statsContainer.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      }, { passive: true });
-
-      function handleSwipe() {
-        const swipeThreshold = 50;
-        if (touchEndX < touchStartX - swipeThreshold) {
-          // Swipe left (next item)
-          goToNext();
-        } else if (touchEndX > touchStartX + swipeThreshold) {
-          // Swipe right (prev item)
-          goToPrev();
-        }
-      }
-
-      const mobileObserver = new IntersectionObserver((entries) => {
+      // Start animation when section is visible
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            runCarousel();
-            mobileObserver.unobserve(entry.target);
+            console.log('Starting stats grid animation');
+            
+            // Animate each stat with staggered timing
+            statNumbers.forEach((number, index) => {
+              animateNumber(number as HTMLElement, index * 300); // 300ms delay between each
+            });
+            
+            observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.3 });
+      }, { threshold: 0.5 });
 
-      mobileObserver.observe(statsSection);
-
+      observer.observe(statsSection);
     } else {
-      // Desktop behavior is handled by GSAP in app.js
+      console.log('Desktop mode - stats handled by app.js');
     }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStatsGrid);
+  } else {
+    initStatsGrid();
   }
 </script>

@@ -1,0 +1,111 @@
+﻿
+> ryx-ai-website@0.0.1 astro
+> astro check
+
+[2m23:28:33[22m [34m[content][39m Syncing content
+[2m23:28:33[22m [34m[content][39m Synced content
+[2m23:28:33[22m [34m[types][39m Generated [2m56ms[22m
+[2m23:28:33[22m [34m[check][39m Getting diagnostics for Astro files in E:\Work\P-prjt\RXY.ai\tigrid-website...
+[96mpublic/app.js[0m:[93m773[0m:[93m35[0m - [93mwarning[0m[90m ts(6133): [0m'direction' is declared but its value is never read.
+
+[7m773[0m function renderTestimonial(index, direction = 1) {
+[7m   [0m [93m                                  ~~~~~~~~~[0m
+
+[96msrc/components/Architecture.astro[0m:[93m621[0m:[93m28[0m - [91merror[0m[90m ts(7006): [0mParameter 'id' implicitly has an 'any' type.
+
+[7m621[0m     const getBottomEdge = (id) => {
+[7m   [0m [91m                           ~~[0m
+[96msrc/components/Architecture.astro[0m:[93m609[0m:[93m25[0m - [91merror[0m[90m ts(7006): [0mParameter 'id' implicitly has an 'any' type.
+
+[7m609[0m     const getTopEdge = (id) => {
+[7m   [0m [91m                        ~~[0m
+[96msrc/components/Architecture.astro[0m:[93m593[0m:[93m26[0m - [91merror[0m[90m ts(7006): [0mParameter 'id' implicitly has an 'any' type.
+
+[7m593[0m     const getLeftEdge = (id) => {
+[7m   [0m [91m                         ~~[0m
+[96msrc/components/Architecture.astro[0m:[93m581[0m:[93m27[0m - [91merror[0m[90m ts(7006): [0mParameter 'id' implicitly has an 'any' type.
+
+[7m581[0m     const getRightEdge = (id) => {
+[7m   [0m [91m                          ~~[0m
+[96msrc/components/Architecture.astro[0m:[93m569[0m:[93m24[0m - [91merror[0m[90m ts(7006): [0mParameter 'id' implicitly has an 'any' type.
+
+[7m569[0m     const getCenter = (id) => {
+[7m   [0m [91m                       ~~[0m
+
+[96msrc/components/Solutions.astro[0m:[93m282[0m:[93m42[0m - [91merror[0m[90m ts(2339): [0mProperty 'dataset' does not exist on type 'Element'.
+
+[7m282[0m       tab.classList.toggle('active', tab.dataset.industry === industryKey);
+[7m   [0m [91m                                         ~~~~~~~[0m
+[96msrc/components/Solutions.astro[0m:[93m277[0m:[93m36[0m - [91merror[0m[90m ts(7006): [0mParameter 'industryKey' implicitly has an 'any' type.
+
+[7m277[0m   window.selectIndustry = function(industryKey) {
+[7m   [0m [91m                                   ~~~~~~~~~~~[0m
+[96msrc/components/Solutions.astro[0m:[93m277[0m:[93m10[0m - [91merror[0m[90m ts(2339): [0mProperty 'selectIndustry' does not exist on type 'Window & typeof globalThis'.
+
+[7m277[0m   window.selectIndustry = function(industryKey) {
+[7m   [0m [91m         ~~~~~~~~~~~~~~[0m
+[96msrc/components/Solutions.astro[0m:[93m258[0m:[93m29[0m - [91merror[0m[90m ts(7006): [0mParameter 'tag' implicitly has an 'any' type.
+
+[7m258[0m         ${industry.tags.map(tag => `<span class="sol-tag">${tag}</span>`).join('')}
+[7m   [0m [91m                            ~~~[0m
+[96msrc/components/Solutions.astro[0m:[93m239[0m:[93m22[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ financial: { label: string; color: string; icon: string; headline: string; description: string; metric: string; metricLabel: string; tags: string[]; cta: string; }; healthcare: { label: string; color: string; ... 6 more ...; cta: string; }; ... 6 more ...; realestate: { ...; }; }'.
+
+[7m239[0m     const industry = industries[industryKey];
+[7m   [0m [91m                     ~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/Solutions.astro[0m:[93m238[0m:[93m34[0m - [91merror[0m[90m ts(7006): [0mParameter 'industryKey' implicitly has an 'any' type.
+
+[7m238[0m   function renderIndustryContent(industryKey) {
+[7m   [0m [91m                                 ~~~~~~~~~~~[0m
+[96msrc/components/Solutions.astro[0m:[93m236[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'currentIndustry' is declared but its value is never read.
+
+[7m236[0m   let currentIndustry = 'financial';
+[7m   [0m [93m      ~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/Stats.astro[0m:[93m43[0m:[93m30[0m - [91merror[0m[90m ts(7006): [0mParameter 'element' implicitly has an 'any' type.
+
+[7m43[0m       function animateNumber(element, delay = 0) {
+[7m  [0m [91m                             ~~~~~~~[0m
+
+[96msrc/components/Testimonials.astro[0m:[93m172[0m:[93m11[0m - [91merror[0m[90m ts(7005): [0mVariable 'autoRotateInterval' implicitly has an 'any' type.
+
+[7m172[0m       if (autoRotateInterval) {
+[7m   [0m [91m          ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/components/Testimonials.astro[0m:[93m94[0m:[93m32[0m - [91merror[0m[90m ts(7006): [0mParameter 'index' implicitly has an 'any' type.
+
+[7m94[0m     function renderTestimonial(index) {
+[7m  [0m [91m                               ~~~~~[0m
+[96msrc/components/Testimonials.astro[0m:[93m91[0m:[93m9[0m - [91merror[0m[90m ts(7034): [0mVariable 'autoRotateInterval' implicitly has type 'any' in some locations where its type cannot be determined.
+
+[7m91[0m     let autoRotateInterval = null;
+[7m  [0m [91m        ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/layouts/Layout.astro[0m:[93m62[0m:[93m13[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m62[0m     <script src="/app.js" defer></script>
+[7m  [0m [93m            ~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m46[0m:[93m13[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m46[0m     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+[7m  [0m [93m            ~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m45[0m:[93m13[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m45[0m     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+[7m  [0m [93m            ~~~[0m
+
+Result (18 files): 
+- 15 errors
+- 0 warnings
+- 5 hints
+

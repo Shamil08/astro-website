@@ -233,9 +233,11 @@
     }
   };
 
-  let currentIndustry = 'financial';
+  type IndustryKey = keyof typeof industries;
 
-  function renderIndustryContent(industryKey) {
+  let currentIndustry: IndustryKey = 'financial';
+
+  function renderIndustryContent(industryKey: IndustryKey) {
     const industry = industries[industryKey];
     const content = document.getElementById('solutionsContent');
     
@@ -255,7 +257,7 @@
       </div>
       
       <div class="sol-tags">
-        ${industry.tags.map(tag => `<span class="sol-tag">${tag}</span>`).join('')}
+        ${industry.tags.map((tag: string) => `<span class="sol-tag">${tag}</span>`).join('')}
       </div>
       
       <a href="#contact" class="sol-cta">
@@ -273,13 +275,20 @@
     content.classList.add('sol-fade-in');
   }
 
+  declare global {
+    interface Window {
+      selectIndustry: (key: IndustryKey) => void;
+    }
+  }
+
   // Make function global so onclick can access it
-  window.selectIndustry = function(industryKey) {
+  window.selectIndustry = function(industryKey: IndustryKey) {
     currentIndustry = industryKey;
     
     // Update active tab
-    document.querySelectorAll('.sol-tab').forEach(tab => {
-      tab.classList.toggle('active', tab.dataset.industry === industryKey);
+    document.querySelectorAll('.sol-tab').forEach((tab) => {
+      const el = tab as HTMLElement;
+      el.classList.toggle('active', el.dataset.industry === industryKey);
     });
     
     // Render content

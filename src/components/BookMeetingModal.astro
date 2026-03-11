@@ -1,0 +1,54 @@
+---
+// BookMeetingModal.astro - Popup form for lead capture
+---
+
+<div id="bookMeetingModal" class="modal-overlay" aria-hidden="true" style="opacity: 0; pointer-events: none; transition: opacity 0.3s ease;">
+  <div class="modal-container">
+    <button id="closeModalBtn" class="modal-close" aria-label="Close modal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"></path>
+      </svg>
+    </button>
+    
+    <div class="modal-header">
+      <h3 class="modal-title">Book a Meeting</h3>
+      <p class="modal-subtitle">See how RYX AI can orchestration your communication infrastructure.</p>
+    </div>
+
+    <form id="bookMeetingForm" class="modal-form">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="John Doe" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="businessEmail">Business Email</label>
+        <input type="email" id="businessEmail" name="businessEmail" placeholder="john@company.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="contactNumber">Contact Number</label>
+        <input type="tel" id="contactNumber" name="contactNumber" placeholder="+1 (555) 000-0000" required />
+      </div>
+
+      <div class="form-group">
+        <label for="businessName">Business Name</label>
+        <input type="text" id="businessName" name="businessName" placeholder="Acme Corp" required />
+      </div>
+
+      <button type="submit" class="modal-submit-btn">
+        <span>Submit Request</span>
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+
+      <div class="form-checkbox-group">
+        <input type="checkbox" id="complianceAgree" name="complianceAgree" required />
+        <label for="complianceAgree" class="checkbox-label">
+          I agree to receive updates and insights from RYX AI and accept the <a href="/terms" class="modal-link">Terms & Conditions</a> and <a href="/privacy" class="modal-link">Privacy Policy</a>. Reply 'STOP' to opt out of promotional SMS or click the "unsubscribe" link at the bottom of any email.
+        </label>
+      </div>
+    </form>
+  </div>
+</div>

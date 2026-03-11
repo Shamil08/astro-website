@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Terms & Conditions - RYX AI">
+  <Navbar />
+  
+  <main class="legal-page">
+    <div class="legal-container">
+      <div class="legal-header">
+        <h1 class="legal-title">Terms & Conditions</h1>
+        <p class="legal-updated">Last Updated: March 2026</p>
+      </div>
+
+      <div class="legal-content">
+        <section>
+          <h2>1. Agreement to Terms</h2>
+          <p>By accessing or using RYX AI's infrastructure, platform, or professional services, you agree to be bound by these Terms and Conditions. If you do not agree to all the terms and conditions, then you may not access the platform or use any services.</p>
+        </section>
+
+        <section>
+          <h2>2. Service Description</h2>
+          <p>RYX AI provides artificial intelligence automation orchestration, system architecture design, and communication infrastructure management. We build, deploy, and continuously optimize communication systems for enterprise operations.</p>
+        </section>
+
+        <section>
+          <h2>3. Intellectual Property Rights</h2>
+          <p>Unless otherwise stated, RYX AI and/or its licensors own the intellectual property rights for all material on RYX AI. All intellectual property rights are reserved. You may access this from RYX AI for your own internal business use subjected to restrictions set in these terms and conditions.</p>
+        </section>
+
+        <section>
+          <h2>4. Data and Privacy</h2>
+          <p>Your privacy is critically important to us. Our Privacy Policy explains how we collect, use, and share your personal data. By using our services, you agree to the collection and use of information in accordance with our Privacy Policy.</p>
+        </section>
+
+        <section>
+          <h2>5. Communication Operations</h2>
+          <p>By providing your phone number and email address, you agree to receive administrative and promotional communications from RYX AI. You may opt out of promotional messages at any time by replying 'STOP' to text messages or clicking the unsubscribe link in emails.</p>
+        </section>
+
+        <section>
+          <h2>6. Limitation of Liability</h2>
+          <p>In no event shall RYX AI, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 150px 2rem 100px;
+    min-height: 100vh;
+    background: var(--bg);
+  }
+
+  .legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 4rem;
+  }
+
+  .legal-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .legal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .legal-updated {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .legal-content section {
+    margin-bottom: 3rem;
+  }
+
+  .legal-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .legal-content p {
+    color: var(--muted-2);
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .legal-container {
+      padding: 2rem;
+    }
+    
+    .legal-page {
+      padding: 120px 1rem 80px;
+    }
+
+    .legal-title {
+      font-size: 2rem;
+    }
+  }
+</style>
