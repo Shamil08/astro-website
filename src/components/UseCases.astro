@@ -253,4 +253,25 @@
       }
     });
   });
+
+  // Auto-select tab from URL query param (e.g. /?case=sales#use-cases)
+  const params = new URLSearchParams(window.location.search);
+  const requestedCase = params.get('case');
+  const validCases = ['sales', 'support', 'leads', 'followup', 'hr'];
+
+  if (requestedCase && validCases.includes(requestedCase)) {
+    const targetTab = document.querySelector(`.uc-tab[data-case="${requestedCase}"]`);
+    if (targetTab) {
+      tabs.forEach(t => t.classList.remove('active'));
+      cases.forEach(c => c.classList.remove('active'));
+      targetTab.classList.add('active');
+      const targetContent = document.querySelector(`[data-case-content="${requestedCase}"]`);
+      if (targetContent) targetContent.classList.add('active');
+      // Scroll to section
+      setTimeout(() => {
+        const section = document.getElementById('use-cases');
+        if (section) section.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }
 </script>

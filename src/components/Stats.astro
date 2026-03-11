@@ -67,7 +67,6 @@ const stats = [
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            console.log('Starting stats grid animation');
             
             // Animate each stat with staggered timing
             statNumbers.forEach((number, index) => {

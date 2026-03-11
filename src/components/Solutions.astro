@@ -235,8 +235,6 @@
 
   type IndustryKey = keyof typeof industries;
 
-  let currentIndustry: IndustryKey = 'financial';
-
   function renderIndustryContent(industryKey: IndustryKey) {
     const industry = industries[industryKey];
     const content = document.getElementById('solutionsContent');
@@ -283,7 +281,6 @@
 
   // Make function global so onclick can access it
   window.selectIndustry = function(industryKey: IndustryKey) {
-    currentIndustry = industryKey;
     
     // Update active tab
     document.querySelectorAll('.sol-tab').forEach((tab) => {
@@ -298,7 +295,21 @@
   // Initialize on page load
   document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('solutionsContent')) {
-      renderIndustryContent('financial');
+      // Check if a specific industry was requested via URL param
+      const params = new URLSearchParams(window.location.search);
+      const requestedIndustry = params.get('industry') as IndustryKey | null;
+      const validIndustries: IndustryKey[] = ['financial', 'healthcare', 'ecommerce', 'government', 'travel', 'education', 'retail', 'insurance', 'realestate'];
+      
+      if (requestedIndustry && validIndustries.includes(requestedIndustry)) {
+        window.selectIndustry(requestedIndustry);
+        // Scroll to solutions section smoothly
+        setTimeout(() => {
+          const solutionsSection = document.getElementById('solutions');
+          if (solutionsSection) solutionsSection.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        renderIndustryContent('financial');
+      }
     }
   });
 </script>
