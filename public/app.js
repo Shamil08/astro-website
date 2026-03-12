@@ -1,5 +1,5 @@
 /* ============================================================
-   RYX AI — Application JavaScript
+   RYX AI - Application JavaScript
    ============================================================ */
 
 /* ── INITIALIZE GSAP ANIMATIONS ── */
@@ -648,7 +648,7 @@ const testimonialsNew = [
     color: '#7c5cfc',
   },
   {
-    quote: "Finally, infrastructure that can keep up with us. Black Friday, Prime Day — it doesn't matter. RYX AI doesn't flinch.",
+    quote: "Finally, infrastructure that can keep up with us. Black Friday, Prime Day - it doesn't matter. RYX AI doesn't flinch.",
     name: 'Jordan Kim',
     title: 'CTO',
     company: 'ShopStream',
@@ -761,7 +761,7 @@ const testimonials = [
     name: 'Dr. Priya Nair', title: 'Chief Digital Officer', company: 'MedCore Health', initials: 'PN', color: '#7c5cfc',
   },
   {
-    quote: "Finally, infrastructure that can keep up with us. Black Friday, Prime Day — it doesn't matter. RYX AI doesn't flinch.",
+    quote: "Finally, infrastructure that can keep up with us. Black Friday, Prime Day - it doesn't matter. RYX AI doesn't flinch.",
     name: 'Jordan Kim', title: 'CTO', company: 'ShopStream', initials: 'JK', color: '#4f8ef7',
   },
   {
