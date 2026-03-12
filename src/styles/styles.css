@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap');
 
 /* ============================================================
-   RYX AI — Complete Styles (Pixel-Perfect Figma Match)
+   RYX AI - Complete Styles (Pixel-Perfect Figma Match)
    ============================================================ */
 
 /* ── DESIGN TOKENS ── */
@@ -608,7 +608,7 @@ body.menu-open {
   overflow: hidden;
 }
 
-/* Hero glow — kept well below viewport top to avoid blue strip at nav */
+/* Hero glow - kept well below viewport top to avoid blue strip at nav */
 .hero-section::before {
   content: '';
   position: absolute;
@@ -3297,7 +3297,7 @@ body.menu-open {
   justify-content: center;
 }
 
-/* Step 1 & 3: visual column on left — align number to the left of column so it doesn’t sit under the center line */
+/* Step 1 & 3: visual column on left - align number to the left of column so it doesn’t sit under the center line */
 .how-step-row .how-visual-col {
   justify-content: flex-start;
 }
@@ -3312,7 +3312,7 @@ body.menu-open {
   transform: translate(0, -50%);
 }
 
-/* Step 2 & 4: visual in right column — number at right edge */
+/* Step 2 & 4: visual in right column - number at right edge */
 .how-step-row-rev .how-visual-col {
   justify-content: flex-end;
 }
