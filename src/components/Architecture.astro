@@ -720,11 +720,18 @@
         defs.appendChild(filter);
       }
 
-      // Animate dot along path
+      // Animate dot along path with bidirectional movement for main flow connections
       const animateMotion = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
       animateMotion.setAttribute('dur', `${2.5 + index * 0.3}s`);
       animateMotion.setAttribute('repeatCount', 'indefinite');
       animateMotion.setAttribute('path', d);
+      
+      // Add bidirectional animation for main flow connections (channels <-> platform <-> systems)
+      if (conn.mainFlow) {
+        animateMotion.setAttribute('keyPoints', '0;1;0');
+        animateMotion.setAttribute('keyTimes', '0;0.5;1');
+      }
+      
       circle.appendChild(animateMotion);
       
       svg.appendChild(circle);
@@ -781,6 +788,11 @@
         animateMotion.setAttribute('dur', `${3 + i * 0.3}s`);
         animateMotion.setAttribute('repeatCount', 'indefinite');
         animateMotion.setAttribute('path', d);
+        
+        // Add bidirectional animation for knowledge sources (vertical connections)
+        animateMotion.setAttribute('keyPoints', '0;1;0');
+        animateMotion.setAttribute('keyTimes', '0;0.5;1');
+        
         arrowDot.appendChild(animateMotion);
         
         svg.appendChild(arrowDot);

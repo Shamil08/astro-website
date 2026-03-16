@@ -456,6 +456,7 @@ ul {
   pointer-events: auto;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu.open {
@@ -471,6 +472,8 @@ ul {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.2s ease;
   text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-nav-link:hover,
@@ -490,6 +493,12 @@ ul {
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-cta:hover,
@@ -517,6 +526,68 @@ ul {
 
   .navbar {
     padding: 0.75rem 0;
+  }
+
+  /* Ensure mobile menu is properly positioned and styled */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    background: #050508;
+    display: none;
+    flex-direction: column;
+    padding-top: 90px;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+  }
+
+  .mobile-menu.open {
+    display: flex !important;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 1.5rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:focus {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .mobile-cta {
+    display: block;
+    margin: 2rem 2rem;
+    padding: 1rem 1.5rem;
+    background: #4f8ef7;
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  .mobile-cta:hover,
+  .mobile-cta:focus {
+    background: #3d7ce6;
+    transform: translateY(-1px);
   }
 
   /* Hero mobile spacing improvements */
@@ -592,6 +663,37 @@ ul {
 /* Prevent body scroll when mobile menu is open */
 body.menu-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Ensure mobile menu button is always accessible */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0.5rem;
+  z-index: 10001;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu-btn:focus {
+  outline: 2px solid #4f8ef7;
+  outline-offset: 2px;
+}
+
+.mobile-menu-btn svg {
+  pointer-events: none;
+  color: #ffffff;
+  transition: opacity 0.2s ease;
 }
 
 /* ============================================================

@@ -16,7 +16,7 @@
   <div class="nav-auth">
       <button data-modal-trigger="book-meeting" class="nav-cta">Book Meeting</button>
     </div>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
       <svg id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         stroke-width="2" stroke-linecap="round" aria-hidden="true">
         <line x1="4" x2="20" y1="6" y2="6" />
@@ -72,11 +72,13 @@
           menuIcon.style.display = 'block';
           closeIcon.style.display = 'none';
           body.classList.remove('menu-open');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
         } else {
           mobileMenu.classList.add('open');
           menuIcon.style.display = 'none';
           closeIcon.style.display = 'block';
           body.classList.add('menu-open');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
         }
       }
 
@@ -88,7 +90,7 @@
       });
       
       // Close menu when clicking on links
-      const mobileLinks = mobileMenu.querySelectorAll('a');
+      const mobileLinks = mobileMenu.querySelectorAll('a, button');
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
           toggleMenu(true);
@@ -117,6 +119,9 @@
           toggleMenu(true);
         }
       });
+
+      // Ensure proper initial state
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
   });
 </script>
