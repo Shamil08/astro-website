@@ -20,7 +20,9 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#050508" />
-    <link rel="icon" type="image/png" href="/logo/ryx-logo-icon.png" />
+    <!-- High-res PNG instead of small ICO to fix blur -->
+    <link rel="icon" type="image/png" href="/logo/ryx-logo-icon.png">
+    <link rel="apple-touch-icon" href="/logo/ryx-logo-icon.png">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
